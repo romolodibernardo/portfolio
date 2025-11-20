@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Il tuo nome — Portfolio</title>
+  <meta name="description" content="Portfolio personale: progetti, pubblicazioni e contatti." />
+  <meta property="og:title" content="Il tuo nome — Portfolio" />
+  <meta property="og:description" content="Progetti, pubblicazioni e contatti." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/preview.png" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🧭</text></svg>">
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --bg-soft: #111217;
+      --text: #e8eaed;
+      --muted: #aeb4c0;
+      --acc: #6ae3ff;
+      --card: #151822;
+      --shadow: 0 10px 30px rgba(0,0,0,0.25);
+      --radius: 18px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6f7fb; --bg-soft: #ffffff; --text: #0d1321; --muted:#5b606a; --acc:#0066ff; --card:#ffffff; --shadow: 0 10px 25px rgba(0,0,0,.08);
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text); background: radial-gradient(1200px 800px at 80% -20%, rgba(106,227,255,.08), transparent 50%), var(--bg);
+    }
+    a { color: var(--acc); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 20px 80px; }
+    header { display: grid; grid-template-columns: 120px 1fr; gap: 20px; align-items: center; margin-top: 12px; }
+    .avatar { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow); background:#222; }
+    .title h1 { margin: 0; font-size: 2.2rem; letter-spacing: .2px; }
+    .title p { margin: 6px 0 0; color: var(--muted); max-width: 70ch; }
+    .chips { margin-top: 12px; display:flex; flex-wrap: wrap; gap:10px; }
+    .chip { padding: 6px 10px; border:1px solid rgba(255,255,255,.08); border-radius: 999px; background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.06)); color: var(--muted); }
+    nav { margin-top: 18px; display:flex; gap:14px; flex-wrap: wrap; }
+    nav a { padding: 8px 12px; border-radius: 999px; background: var(--bg-soft); border:1px solid rgba(255,255,255,.06); box-shadow: var(--shadow); }
+
+    section { margin-top: 36px; }
+    .section-title { display:flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .section-title h2 { margin:0; font-size: 1.4rem; }
+    .grid { display:grid; gap:16px; grid-template-columns: repeat(12, 1fr); }
+    .card { grid-column: span 12; background: var(--card); border:1px solid rgba(255,255,255,.06); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+    .card h3 { margin: 0 0 6px; font-size: 1.1rem; }
+    .card p { margin: 0; color: var(--muted); }
+    .meta { margin-top: 10px; display:flex; gap:12px; flex-wrap: wrap; color: var(--muted); font-size:.95rem; }
+    .badges { display:flex; gap:8px; flex-wrap: wrap; margin-top:10px; }
+    .badge { font-size: .85rem; padding: 4px 8px; border-radius: 999px; border: 1px dashed rgba(255,255,255,.15); color: var(--muted); }
+    .card .links { margin-top: 10px; display:flex; gap: 10px; flex-wrap: wrap; }
+
+    .projects .card { grid-column: span 12; }
+    @media (min-width: 640px) { .projects .card { grid-column: span 6; } }
+    @media (min-width: 960px) { .projects .card { grid-column: span 4; } }
+
+    .pubs li { margin: 8px 0; }
+    .footer { margin-top: 40px; color: var(--muted); font-size: .95rem; }
+
+    .cta { display:inline-flex; align-items:center; gap:10px; padding: 10px 14px; border-radius: 12px; background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)); border:1px solid rgba(255,255,255,.08); box-shadow: var(--shadow); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img class="avatar" src="assets/me.jpg" alt="Ritratto" />
+      <div class="title">
+        <h1>Il tuo nome</h1>
+        <p>
+          Breve bio in 2–3 frasi: ruolo, interessi (es. controllo di sistemi marini, design di scafi, HIL, CFD). Valore che porti e cosa cerchi.
+        </p>
+        <div class="chips">
+          <span class="chip">Hydrodynamics</span>
+          <span class="chip">Control</span>
+          <span class="chip">Python · MATLAB</span>
+          <span class="chip">CAD/CFD</span>
+        </div>
+        <nav>
+          <a href="#projects">Progetti</a>
+          <a href="#publications">Pubblicazioni</a>
+          <a href="#contact">Contatti</a>
+          <a class="cta" href="assets/CV_Tuonome.pdf">Scarica CV</a>
+        </nav>
+      </div>
+    </header>
+
+    <section id="projects">
+      <div class="section-title">
+        <h2>Progetti selezionati</h2>
+        <a href="https://github.com/tuonomeutente" target="_blank" rel="noreferrer">GitHub ↗</a>
+      </div>
+      <div class="grid projects">
+        <!-- Project Card -->
+        <article class="card">
+          <h3>Foiling Controller — Path Following</h3>
+          <p>Controller a cascata con osservatore; robustezza a disturbi. RMSE -88% vs baseline su percorso curvo.</p>
+          <div class="badges">
+            <span class="badge">Python</span>
+            <span class="badge">MATLAB</span>
+            <span class="badge">Simulation</span>
+          </div>
+          <div class="links">
+            <a href="https://github.com/tuonomeutente/foiling-controller">Repo</a>
+            <a href="#">Demo</a>
+            <a href="#">Report</a>
+          </div>
+          <div class="meta">2025 · ruolo: design & controllo</div>
+        </article>
+
+        <article class="card">
+          <h3>Hull Designer — L/D 7–9</h3>
+          <p>Generatore parametrico di geometrie ottimizzate per resistenza idrodinamica con vincolo L/D 7–9.</p>
+          <div class="badges">
+            <span class="badge">Python</span>
+            <span class="badge">Grasshopper</span>
+            <span class="badge">Geometry</span>
+          </div>
+          <div class="links">
+            <a href="https://github.com/tuonomeutente/hull-designer">Repo</a>
+            <a href="#">Docs</a>
+          </div>
+          <div class="meta">2025 · ruolo: algoritmi & CAD</div>
+        </article>
+
+        <article class="card">
+          <h3>Bulb CG Corrector</h3>
+          <p>Script per correzione verticale del baricentro del bulbo con output in mm e parametri interattivi.</p>
+          <div class="badges">
+            <span class="badge">Python</span>
+            <span class="badge">GH Python</span>
+          </div>
+          <div class="links">
+            <a href="https://github.com/tuonomeutente/bulb-cg-corrector">Repo</a>
+          </div>
+          <div class="meta">2025 · ruolo: scripting</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="section-title">
+        <h2>Pubblicazioni & scritti</h2>
+      </div>
+      <ul class="card pubs">
+        <li>Autore, <em>Titolo</em>, venue/anno. <a href="#">PDF</a> · <a href="#">DOI</a></li>
+        <li>Autore, <em>Titolo</em>, venue/anno. <a href="#">PDF</a></li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">
+        <h2>Contatti</h2>
+      </div>
+      <div class="card">
+        <p>Email: <a href="mailto:tuo.nome@dominio">tuo.nome@dominio</a> · LinkedIn: <a href="https://www.linkedin.com/in/tuo-linkedin">/tuo-linkedin</a> · GitHub: <a href="https://github.com/tuonomeutente">@tuonomeutente</a></p>
+      </div>
+    </section>
+
+    <p class="footer">© <span id="y"></span> Il tuo nome — Ultimo aggiornamento manuale.
+      <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+    </p>
+  </div>
+</body>
+</html>
