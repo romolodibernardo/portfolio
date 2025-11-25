@@ -2,6 +2,9 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Romolo Di Bernardo - Portfolio</title>
     
@@ -21,6 +24,8 @@
             
             --text-main: #1e293b; 
             --text-muted: #64748b; 
+            
+            /* COLORE: ARANCIONE */
             --accent-color: #ea580c; 
             --accent-soft: rgba(234, 88, 12, 0.15); 
             
@@ -63,7 +68,9 @@
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; position: relative; }
         
         .bg-white { background-color: var(--bg-white); }
-        .bg-alt { background-color: var(--bg-alt); border-top: 1px solid rgba(0,0,0,0.03); border-bottom: 1px solid rgba(0,0,0,0.03); }
+        
+        /* CORREZIONE: RIMOSSI I BORDI PER EVITARE LINEE SOTTILI */
+        .bg-alt { background-color: var(--bg-alt); }
 
         /* UTILITY */
         .pb-0 { padding-bottom: 0 !important; }
@@ -206,6 +213,7 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .d-100 { transition-delay: 0.1s; } .d-200 { transition-delay: 0.2s; }
+        .d-300 { transition-delay: 0.3s; } .d-400 { transition-delay: 0.4s; } .d-500 { transition-delay: 0.5s; }
 
         .details-visual { width: 35%; position: relative; height: 320px; background-color: #333; border-radius: 12px 0 0 12px;}
         .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.8s ease; }
@@ -225,17 +233,14 @@
         /* HUDSON CONTACT STYLE */
         .hudson-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
         
-        /* HEADER CENTRATO */
         .contact-header { text-align: center; margin-bottom: 50px; }
         .contact-intro { color: var(--text-muted); line-height: 1.8; max-width: 600px; margin: 0 auto; }
         
-        /* CONTACT TIMELINE (CON PALLINI PICCOLI -> GRANDI IN HOVER) */
+        /* CONTACT TIMELINE */
         .contact-timeline { position: relative; padding-bottom: 0; }
         
-        /* 1. CONTROLLO LINEA VERTICALE */
         .contact-timeline::before { 
             content: ''; position: absolute; 
-            /* Usa --line-pos (140px) per allinearsi alle altre, oppure modificalo qui */
             left: calc(var(--line-pos) - 1px); 
             top: -217px; bottom: 20px;  
             width: var(--line-width); 
@@ -243,12 +248,11 @@
             z-index: 0; 
         }
         
-        /* 2. PALLINO */
         .contact-timeline .t-marker { 
-            width: 16px; height: 16px; /* Dimensione Normale Piccola */
+            width: 16px; height: 16px; 
             position: absolute; 
-            left: var(--line-pos); /* Posizionato sulla linea */
-            transform: translateX(-50%); /* Centrato */
+            left: var(--line-pos); 
+            transform: translateX(-50%); 
             margin: 0; z-index: 2; 
             display: flex; align-items: center; justify-content: center;
             background-color: white;
@@ -257,7 +261,6 @@
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
         }
         
-        /* 3. ICONE DENTRO I PALLINI (Invisibili di default) */
         .contact-timeline .t-marker::before {
             display: block; 
             font-size: 20px; 
@@ -265,31 +268,24 @@
             opacity: 0; transform: scale(0); transition: 0.2s;
         }
         
-        /* 4. EFFETTO HOVER */
-        /* Il pallino diventa grande (40px) e arancione */
         .contact-timeline .timeline-header:hover .t-marker { 
             width: 40px; height: 40px; 
             background-color: var(--accent-color); 
             border-color: var(--accent-color); 
             box-shadow: 0 0 0 6px var(--accent-soft); 
         }
-        /* L'icona appare */
         .contact-timeline .timeline-header:hover .t-marker::before { opacity: 1; transform: scale(1); }
-        /* Il testo si sposta */
         .contact-timeline .timeline-header:hover .t-title { color: var(--accent-color); transform: translateX(10px); transition: 0.3s; }
 
-        /* Titolo a destra del pallino */
-        /* Spostato a destra di (line-pos + un po' di margine) */
         .contact-timeline .timeline-header { 
             padding: 10px 0; transition: 0.3s; 
             display: flex; align-items: center; text-decoration: none;
             position: relative;
-            padding-left: calc(var(--line-pos) + 30px); /* Spazio fisso dalla linea */
+            padding-left: calc(var(--line-pos) + 30px); 
         }
 
         .contact-timeline .t-title { font-size: 1rem; font-weight: 400; font-family: var(--font-body); transition: 0.3s; }
 
-        /* Mapping Icone */
         .c-email .t-marker::before { content: "\f0e0"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
         .c-linkedin .t-marker::before { content: "\f0e1"; font-family: "Font Awesome 6 Brands"; }
         .c-research .t-marker::before { content: "\f4f8"; font-family: "Font Awesome 6 Brands"; }
@@ -297,7 +293,11 @@
 
         .contact-timeline .timeline-item { margin-bottom: 25px; }
 
-        .contact-right { display: flex; flex-direction: column; gap: 20px; justify-content: center; height: 100%; padding-top: 20px;}
+        .contact-right { 
+            display: flex; flex-direction: column; gap: 20px; 
+            justify-content: center; height: 100%; padding-top: 20px;
+            margin-top: -60px;
+        }
         
         .hudson-btn {
             display: flex; align-items: center; justify-content: space-between;
@@ -336,7 +336,21 @@
             :root { --line-position: 25px; --snake-start-x: 25px; }
             h1.name { font-size: 3rem; }
             .hero { flex-direction: column; padding-top: 120px;}
-            .hero-content { padding: 0 20px; text-align: center; margin-bottom: 50px;}
+            
+            /* --- FIX STABILITÀ HERO --- */
+            .hero-content { 
+                padding: 0 20px; text-align: center; margin-bottom: 50px;
+                display: flex; flex-direction: column; align-items: center; 
+                width: 100%; box-sizing: border-box;
+            }
+            /* MODIFICA QUI: Tagline diventa inline-block per centrarsi correttamente */
+            .tagline { 
+                display: inline-block; 
+                margin-left: 0; margin-right: 0; 
+                width: auto;
+            }
+            p.bio-short { width: 100%; max-width: 100%; }
+
             .hero-visual { height: 400px; width: 100%; }
             #navbar { top: 10px; width: 95%; border-radius: 20px; padding: 8px 0;}
             .menu-toggle { display: block; } 
@@ -346,22 +360,23 @@
             
             /* Hudson Responsive */
             .hudson-grid { grid-template-columns: 1fr; gap: 40px; }
+            .contact-left { text-align: center; }
             
             /* Mobile Contact Timeline */
             .contact-timeline::before { left: 29px; top: 0; bottom: 0; }
             .contact-timeline .t-marker { left: 29px !important; margin: 0; top: 10px; transform: translateX(-50%); }
-            .contact-timeline .timeline-header { padding-left: 60px; } /* Spazio per il pallino */
+            .contact-timeline .timeline-header { padding-left: 60px; } 
             .contact-timeline .t-title { margin-left: 0; }
 
             /* Mobile Timeline Reset */
-            .timeline-wrapper::before { left: 29px; top: -50px; bottom: -50px; background: var(--line-color); }
+            .timeline-wrapper::before { left: 29px; top: -242px; bottom: -50px; background: var(--line-color); }
             .timeline-header { flex-wrap: wrap; padding-left: 50px; }
             .t-date { width: 100%; text-align: left; margin-bottom: 5px; font-size: 0.85rem; color: var(--accent-color);}
             .t-marker { position: absolute; left: 20px !important; margin: 0; top: 28px; }
             .t-role-detail { display: block; margin-left: 0; margin-top: 5px; }
             .t-sep { display: none; } 
             .timeline-details { margin-left: 0; padding-left: 0; padding-top: 10px; }
-            .timeline-wrapper.mirrored::before { left: 29px; right: auto; top: -50px; bottom: 0; }
+            .timeline-wrapper.mirrored::before { left: 29px; right: auto; top: -176px; bottom: 0; }
             .timeline-header.mirrored { justify-content: flex-start; padding-left: 50px; }
             .timeline-header.mirrored .t-content { text-align: left; order: 3; margin-right: 0; }
             .timeline-header.mirrored .t-marker { order: 2; margin-right: 20px; left: 20px !important; margin-left: 0; }
@@ -370,6 +385,17 @@
             .details-content-box { flex-direction: column; }
             .details-visual { width: 100%; height: 250px; border-radius: 12px 12px 0 0; }
             .details-text { width: 100%; padding: 25px; }
+
+            /* FIX PER TITOLI INVERTITI SU MOBILE (MIRRORED) */
+            .timeline-header.mirrored .t-title {
+                display: flex;
+                flex-direction: column-reverse; 
+                align-items: flex-start;
+            }
+            .timeline-header.mirrored .t-role-detail {
+                margin-right: 0 !important; 
+                margin-top: 5px; 
+            }
 
             /* HIDE SNAKE ON MOBILE */
             .snake-section { display: none; }
@@ -417,7 +443,7 @@
 
         <section class="section bg-alt" id="about">
             <div class="container about-grid">
-                <div class="about-visual reveal">
+                <div class="about-visual">
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80" alt="Romolo Di Bernardo" class="profile-img">
                 </div>
 
@@ -662,34 +688,34 @@
                 </div>
 
                 <div class="hudson-grid">
-                    <div class="contact-left reveal">
+                    <div class="contact-left">
                         
                         <div class="timeline-wrapper contact-timeline">
-                            <div class="timeline-item c-email">
+                            <div class="timeline-item c-email reveal d-100">
                                 <a href="mailto:romolo.dibernardo@unicas.it" class="timeline-header">
                                     <div class="t-marker"></div>
                                     <div class="t-title">romolo.dibernardo@unicas.it</div>
                                 </a>
                             </div>
-                            <div class="timeline-item c-email">
+                            <div class="timeline-item c-email reveal d-200">
                                 <a href="mailto:romolo.dibernardo@unina.it" class="timeline-header">
                                     <div class="t-marker"></div>
                                     <div class="t-title">romolo.dibernardo@unina.it</div>
                                 </a>
                             </div>
-                            <div class="timeline-item c-linkedin">
+                            <div class="timeline-item c-linkedin reveal d-300">
                                 <a href="#" class="timeline-header">
                                     <div class="t-marker"></div>
                                     <div class="t-title">Connect on LinkedIn</div>
                                 </a>
                             </div>
-                            <div class="timeline-item c-research">
+                            <div class="timeline-item c-research reveal d-400">
                                 <a href="#" class="timeline-header">
                                     <div class="t-marker"></div>
                                     <div class="t-title">Follow Research</div>
                                 </a>
                             </div>
-                            <div class="timeline-item c-orcid">
+                            <div class="timeline-item c-orcid reveal d-500">
                                 <a href="#" class="timeline-header">
                                     <div class="t-marker"></div>
                                     <div class="t-title">View Academic Profile</div>
@@ -699,8 +725,8 @@
 
                     </div>
 
-                    <div class="contact-right reveal d-200">
-                        <a href="https://calendar.app.google/kzgjRxeRbYEJHsHe8" target="_blank" class="hudson-btn">
+                    <div class="contact-right">
+                        <a href="https://calendar.app.google/kzgjRxeRbYEJHsHe8" target="_blank" class="hudson-btn reveal d-300">
                             <div class="btn-content">
                                 <h4>Prenota una Call</h4>
                                 <span>Verifica disponibilità su Google Calendar</span>
@@ -708,7 +734,7 @@
                             <i class="fas fa-calendar-check btn-icon"></i>
                         </a>
 
-                        <a href="#" class="hudson-btn">
+                        <a href="#" class="hudson-btn reveal d-400">
                             <div class="btn-content">
                                 <h4>Scarica CV</h4>
                                 <span>Formato PDF (Aggiornato 2025)</span>
