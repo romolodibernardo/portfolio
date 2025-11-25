@@ -1,170 +1,819 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Il tuo nome — Portfolio</title>
-  <meta name="description" content="Portfolio personale: progetti, pubblicazioni e contatti." />
-  <meta property="og:title" content="Il tuo nome — Portfolio" />
-  <meta property="og:description" content="Progetti, pubblicazioni e contatti." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/preview.png" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🧭</text></svg>">
-  <style>
-    :root {
-      --bg: #0b0c10;
-      --bg-soft: #111217;
-      --text: #e8eaed;
-      --muted: #aeb4c0;
-      --acc: #6ae3ff;
-      --card: #151822;
-      --shadow: 0 10px 30px rgba(0,0,0,0.25);
-      --radius: 18px;
-    }
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #f6f7fb; --bg-soft: #ffffff; --text: #0d1321; --muted:#5b606a; --acc:#0066ff; --card:#ffffff; --shadow: 0 10px 25px rgba(0,0,0,.08);
-      }
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--text); background: radial-gradient(1200px 800px at 80% -20%, rgba(106,227,255,.08), transparent 50%), var(--bg);
-    }
-    a { color: var(--acc); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 20px 80px; }
-    header { display: grid; grid-template-columns: 120px 1fr; gap: 20px; align-items: center; margin-top: 12px; }
-    .avatar { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow); background:#222; }
-    .title h1 { margin: 0; font-size: 2.2rem; letter-spacing: .2px; }
-    .title p { margin: 6px 0 0; color: var(--muted); max-width: 70ch; }
-    .chips { margin-top: 12px; display:flex; flex-wrap: wrap; gap:10px; }
-    .chip { padding: 6px 10px; border:1px solid rgba(255,255,255,.08); border-radius: 999px; background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.06)); color: var(--muted); }
-    nav { margin-top: 18px; display:flex; gap:14px; flex-wrap: wrap; }
-    nav a { padding: 8px 12px; border-radius: 999px; background: var(--bg-soft); border:1px solid rgba(255,255,255,.06); box-shadow: var(--shadow); }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romolo Di Bernardo - Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    section { margin-top: 36px; }
-    .section-title { display:flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-    .section-title h2 { margin:0; font-size: 1.4rem; }
-    .grid { display:grid; gap:16px; grid-template-columns: repeat(12, 1fr); }
-    .card { grid-column: span 12; background: var(--card); border:1px solid rgba(255,255,255,.06); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
-    .card h3 { margin: 0 0 6px; font-size: 1.1rem; }
-    .card p { margin: 0; color: var(--muted); }
-    .meta { margin-top: 10px; display:flex; gap:12px; flex-wrap: wrap; color: var(--muted); font-size:.95rem; }
-    .badges { display:flex; gap:8px; flex-wrap: wrap; margin-top:10px; }
-    .badge { font-size: .85rem; padding: 4px 8px; border-radius: 999px; border: 1px dashed rgba(255,255,255,.15); color: var(--muted); }
-    .card .links { margin-top: 10px; display:flex; gap: 10px; flex-wrap: wrap; }
+    <style>
+        html { scroll-behavior: smooth; }
 
-    .projects .card { grid-column: span 12; }
-    @media (min-width: 640px) { .projects .card { grid-column: span 6; } }
-    @media (min-width: 960px) { .projects .card { grid-column: span 4; } }
+        :root {
+            /* --- COLORI --- */
+            --bg-white: #ffffff;
+            --bg-alt: #f1f5f9; 
+            --bg-snake: #e0f7fa; 
+            
+            --text-main: #1e293b; 
+            --text-muted: #64748b; 
+            --accent-color: #ea580c; 
+            --accent-soft: rgba(234, 88, 12, 0.15); 
+            
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --glass-border: 1px solid rgba(255, 255, 255, 1);
+            --glass-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            
+            /* --- CONFIGURAZIONE LINEE --- */
+            --line-color: rgba(30, 41, 59, 0.15); 
+            --line-width: 3px; 
+            --line-pos: 140px; 
+            --snake-start-x: 160px; 
 
-    .pubs li { margin: 8px 0; }
-    .footer { margin-top: 40px; color: var(--muted); font-size: .95rem; }
+            --exp-line-top: -239px;    
+            --exp-line-bottom: 0px;    
 
-    .cta { display:inline-flex; align-items:center; gap:10px; padding: 10px 14px; border-radius: 12px; background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.06)); border:1px solid rgba(255,255,255,.08); box-shadow: var(--shadow); }
-  </style>
+            --exp-mirror-line-top: -178px;   
+            --exp-mirror-line-bottom: 0px; 
+            
+            /* FONTS */
+            --font-heading: 'Roboto', sans-serif; 
+            --font-body: 'Space Mono', monospace;   
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-body);
+            background-color: var(--bg-white);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden; 
+            font-size: 14px; 
+            opacity: 0; animation: pageFadeIn 0.5s ease forwards 0.2s;
+        }
+        @keyframes pageFadeIn { to { opacity: 1; } }
+
+        h1, h2 { margin: 0; font-family: var(--font-heading); font-weight: 400; letter-spacing: -0.02em; color: var(--text-main); }
+        h3 { margin: 0; font-family: var(--font-body); font-weight: 400; letter-spacing: -0.03em; color: var(--text-main); }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; position: relative; }
+        
+        .bg-white { background-color: var(--bg-white); }
+        .bg-alt { background-color: var(--bg-alt); border-top: 1px solid rgba(0,0,0,0.03); border-bottom: 1px solid rgba(0,0,0,0.03); }
+
+        /* UTILITY */
+        .pb-0 { padding-bottom: 0 !important; }
+        .pt-0 { padding-top: 0 !important; }
+        .pt-small { padding-top: 40px !important; } 
+        .pb-medium { padding-bottom: 60px !important; }
+        .no-border-top { border-top: none !important; }
+        .no-border-bottom { border-bottom: none !important; }
+
+        /* HERO */
+        .hero { display: flex; height: 100vh; align-items: center; position: relative; background: var(--bg-white); z-index: 1; }
+        .hero-content { flex: 1; padding-right: 60px; padding-left: 5%; z-index: 10; }
+        .hero-visual { flex: 1; height: 100vh; position: relative; overflow: hidden; background-color: #cbd5e1; }
+        .hero-visual img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1.5s ease-in-out; }
+        .hero-visual img.active { opacity: 1; }
+
+        .tagline { font-family: var(--font-body); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0px; color: var(--accent-color); margin-bottom: 15px; display: block; background: var(--accent-soft); padding: 5px 10px; border-radius: 4px; width: fit-content; }
+        h1.name { font-size: 4rem; line-height: 1; margin-bottom: 25px; }
+        p.bio-short { font-family: var(--font-body); font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; max-width: 550px; min-height: 3.6em; }
+        .cursor { display: inline-block; width: 10px; height: 1.2em; background-color: var(--accent-color); vertical-align: bottom; animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .btn { display: inline-block; font-family: var(--font-body); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; background-color: var(--text-main); color: white; padding: 15px 35px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+        .btn:hover { background-color: var(--accent-color); transform: translateY(-2px); }
+
+        /* NAVBAR */
+        .content-wrapper { position: relative; z-index: 2; background-color: var(--bg-alt); padding-top: 30px; padding-bottom: 50px; }
+        #navbar { 
+            position: sticky; top: 20px; z-index: 1000; width: 90%; max-width: 1000px; margin: 0 auto 20px auto; padding: 12px 0; 
+            background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255, 255, 255, 1); border-radius: 50px; box-shadow: var(--glass-shadow); 
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        #navbar.stuck { border-color: var(--accent-color); box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.15); }
+        .nav-container { padding: 0 30px; }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-family: var(--font-heading); font-weight: 500; font-size: 1.5rem; color: var(--text-main); letter-spacing: -1px; }
+        .nav-logo span { color: var(--accent-color); } 
+        .nav-links { list-style: none; margin: 0; padding: 0; display: flex; gap: 30px; }
+        .nav-links a { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0px;}
+        .nav-links a:hover { color: var(--accent-color); }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-main); padding: 5px; }
+
+        /* SEZIONI */
+        .section { padding: 100px 0; position: relative; }
+        .section-title { font-size: 3rem; margin-bottom: 0; text-align: center; font-family: var(--font-heading); font-weight: 400; letter-spacing: -0.02em; }
+        .section-title span { color: var(--accent-color); font-weight: 400; }
+        
+        .about-grid { display: grid; grid-template-columns: 3fr 7fr; gap: 80px; align-items: center;}
+        .about-text { font-size: 1rem; color: var(--text-muted); line-height: 1.8; }
+        .about-text b { color: var(--text-main); font-weight: 700; }
+
+        /* PROFILE IMAGE */
+        .profile-img {
+            width: 100%; max-width: 200px; height: auto;
+            border-radius: 12px; border: var(--line-width) solid var(--line-color);
+            display: block; margin: 0 auto; object-fit: cover; aspect-ratio: 3/4; 
+        }
+
+        /* --- TIMELINE LEFT --- */
+        .timeline-wrapper { position: relative; padding-bottom: 0; }
+        .timeline-wrapper::before { 
+            content: ''; position: absolute; 
+            left: var(--line-pos); 
+            top: var(--exp-line-top); 
+            bottom: var(--exp-line-bottom);  
+            width: var(--line-width); 
+            background: var(--line-color); 
+            z-index: 0; 
+        }
+
+        .timeline-item { position: relative; margin-bottom: 50px; }
+        .timeline-item:last-child { margin-bottom: 0; padding-bottom: 50px; }
+
+        .timeline-header { display: flex; align-items: baseline; cursor: pointer; position: relative; z-index: 1; }
+        .t-date { width: 110px; text-align: right; font-weight: 700; font-size: 0.9rem; color: var(--text-muted); margin-right: 30px; flex-shrink: 0; transition: color 0.3s; }
+        .t-marker { 
+            width: 16px; height: 16px; background-color: #fff; 
+            border: 3px solid var(--text-muted); border-radius: 50%; 
+            transition: 0.3s; position: relative; 
+            left: -9.5px; 
+            margin-right: 25px; flex-shrink: 0; z-index: 2; 
+            transform: translateY(3px); 
+        }
+        .t-content { flex: 1; }
+        .t-title { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 400; margin: 0; transition: color 0.3s; line-height: 1.2; letter-spacing: -0.02em; }
+        .t-role-detail { font-family: var(--font-body); font-weight: 400; color: var(--text-muted); font-size: 0.9rem; margin-left: 10px; }
+        .t-sep { color: var(--accent-color); margin: 0 8px; font-weight: 400; }
+        
+        .timeline-header:hover .t-date, .timeline-header:hover .t-title { color: var(--accent-color); }
+        .timeline-header:hover .t-marker { border-color: var(--accent-color); background-color: var(--accent-color); box-shadow: 0 0 0 6px var(--accent-soft); }
+        
+        .timeline-details { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1); margin-left: var(--line-pos); padding-left: 30px; }
+        .details-inner { overflow: hidden; }
+        .details-content-box { background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 0; margin-top: 25px; display: flex; overflow: hidden; }
+
+        /* --- SNAKE SECTION --- */
+        .snake-section {
+            width: 100%; height: 150px; background-color: var(--bg-snake); 
+            position: relative; overflow: hidden; margin-top: -1px; margin-bottom: -1px;
+        }
+        .snake-container { max-width: 1000px; margin: 0 auto; height: 100%; position: relative; padding: 0 20px; }
+        
+        .snake-curve-top {
+            position: absolute; top: 0; left: var(--snake-start-x);
+            width: calc(50% - var(--snake-start-x)); height: 50%;
+            border-left: var(--line-width) solid var(--line-color);
+            border-bottom: var(--line-width) solid var(--line-color);
+            border-bottom-left-radius: 50px; box-sizing: border-box;
+        }
+        
+        .snake-curve-bottom {
+            position: absolute; top: 50%; right: var(--snake-start-x);
+            width: calc(50% - var(--snake-start-x)); height: 100%;
+            border-right: var(--line-width) solid var(--line-color);
+            border-top: var(--line-width) solid var(--line-color);
+            border-top-right-radius: 50px; box-sizing: border-box;
+            margin-right: calc(var(--line-width) * -1 + 3px); 
+            margin-top: calc(var(--line-width) * -1); 
+        }
+
+        /* --- TIMELINE MIRRORED --- */
+        .timeline-wrapper.mirrored { padding-top: 0; }
+        .timeline-wrapper.mirrored::before { 
+            left: auto; right: var(--line-pos); 
+            top: var(--exp-mirror-line-top); bottom: var(--exp-mirror-line-bottom); 
+            background: var(--line-color); 
+        }
+        .timeline-header.mirrored { justify-content: flex-end; }
+        .timeline-header.mirrored .t-content { text-align: right; order: 1; margin-right: 25px; }
+        .timeline-header.mirrored .t-marker { order: 2; margin-right: 30px; margin-left: 0; left: 9.5px; }
+        .timeline-header.mirrored .t-date { order: 3; text-align: left; margin-right: 0; }
+        .timeline-details.mirrored { margin-left: 0; margin-right: var(--line-pos); padding-left: 0; padding-right: 30px; }
+        
+        @media (min-width: 769px) {
+            .timeline-details.mirrored .details-content-box { flex-direction: row-reverse; }
+            .timeline-details.mirrored .details-visual { border-radius: 0 12px 12px 0; }
+        }
+
+        /* SCROLL REVEAL & CAROUSEL */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .d-100 { transition-delay: 0.1s; } .d-200 { transition-delay: 0.2s; }
+
+        .details-visual { width: 35%; position: relative; height: 320px; background-color: #333; border-radius: 12px 0 0 12px;}
+        .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.8s ease; }
+        .carousel-slide.active { opacity: 1; }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; z-index: 5; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        .carousel-btn:hover { background: var(--accent-color); }
+        .prev-btn { left: 10px; } .next-btn { right: 10px; }
+        .details-text { width: 65%; padding: 40px; }
+        .details-text h4 { margin-top: 0; color: var(--accent-color); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0px; font-size: 1rem; margin-bottom: 15px; font-weight: 500;}
+        .details-text p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px; line-height: 1.7;}
+        .details-text ul { padding-left: 20px; font-size: 0.9rem; color: var(--text-muted); }
+
+        .timeline-item.open .timeline-details { grid-template-rows: 1fr; }
+        .timeline-item.open .t-marker { border-color: var(--accent-color); background: var(--accent-color);} 
+        .timeline-item.open .t-title { color: var(--accent-color); }
+
+        /* HUDSON CONTACT STYLE */
+        .hudson-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        
+        /* HEADER CENTRATO */
+        .contact-header { text-align: center; margin-bottom: 50px; }
+        .contact-intro { color: var(--text-muted); line-height: 1.8; max-width: 600px; margin: 0 auto; }
+        
+        /* CONTACT TIMELINE (CON PALLINI PICCOLI -> GRANDI IN HOVER) */
+        .contact-timeline { position: relative; padding-bottom: 0; }
+        
+        /* 1. CONTROLLO LINEA VERTICALE */
+        .contact-timeline::before { 
+            content: ''; position: absolute; 
+            /* Usa --line-pos (140px) per allinearsi alle altre, oppure modificalo qui */
+            left: calc(var(--line-pos) - 1px); 
+            top: -217px; bottom: 20px;  
+            width: var(--line-width); 
+            background: var(--line-color); 
+            z-index: 0; 
+        }
+        
+        /* 2. PALLINO */
+        .contact-timeline .t-marker { 
+            width: 16px; height: 16px; /* Dimensione Normale Piccola */
+            position: absolute; 
+            left: var(--line-pos); /* Posizionato sulla linea */
+            transform: translateX(-50%); /* Centrato */
+            margin: 0; z-index: 2; 
+            display: flex; align-items: center; justify-content: center;
+            background-color: white;
+            border: 3px solid var(--text-muted);
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+        
+        /* 3. ICONE DENTRO I PALLINI (Invisibili di default) */
+        .contact-timeline .t-marker::before {
+            display: block; 
+            font-size: 20px; 
+            color: white;
+            opacity: 0; transform: scale(0); transition: 0.2s;
+        }
+        
+        /* 4. EFFETTO HOVER */
+        /* Il pallino diventa grande (40px) e arancione */
+        .contact-timeline .timeline-header:hover .t-marker { 
+            width: 40px; height: 40px; 
+            background-color: var(--accent-color); 
+            border-color: var(--accent-color); 
+            box-shadow: 0 0 0 6px var(--accent-soft); 
+        }
+        /* L'icona appare */
+        .contact-timeline .timeline-header:hover .t-marker::before { opacity: 1; transform: scale(1); }
+        /* Il testo si sposta */
+        .contact-timeline .timeline-header:hover .t-title { color: var(--accent-color); transform: translateX(10px); transition: 0.3s; }
+
+        /* Titolo a destra del pallino */
+        /* Spostato a destra di (line-pos + un po' di margine) */
+        .contact-timeline .timeline-header { 
+            padding: 10px 0; transition: 0.3s; 
+            display: flex; align-items: center; text-decoration: none;
+            position: relative;
+            padding-left: calc(var(--line-pos) + 30px); /* Spazio fisso dalla linea */
+        }
+
+        .contact-timeline .t-title { font-size: 1rem; font-weight: 400; font-family: var(--font-body); transition: 0.3s; }
+
+        /* Mapping Icone */
+        .c-email .t-marker::before { content: "\f0e0"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
+        .c-linkedin .t-marker::before { content: "\f0e1"; font-family: "Font Awesome 6 Brands"; }
+        .c-research .t-marker::before { content: "\f4f8"; font-family: "Font Awesome 6 Brands"; }
+        .c-orcid .t-marker::before { content: "\f8d2"; font-family: "Font Awesome 6 Brands"; }
+
+        .contact-timeline .timeline-item { margin-bottom: 25px; }
+
+        .contact-right { display: flex; flex-direction: column; gap: 20px; justify-content: center; height: 100%; padding-top: 20px;}
+        
+        .hudson-btn {
+            display: flex; align-items: center; justify-content: space-between;
+            background: var(--bg-alt); 
+            padding: 10px 40px; 
+            border-radius: 8px; text-decoration: none; transition: 0.3s;
+            border: 1px solid transparent;
+        }
+        .hudson-btn:hover { background: white; border-color: #e2e8f0; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        
+        .btn-content h4 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 5px; font-weight: 400; }
+        .btn-content span { font-family: var(--font-body); color: var(--text-muted); font-size: 0.85rem; }
+        .btn-icon { font-size: 1.5rem; color: var(--accent-color); }
+
+        /* GEOMETRIE SNAKE INVERSO (DX a SX) */
+        .snake-curve-top-rev {
+            position: absolute; top: 0; right: var(--snake-start-x);
+            width: calc(50% - var(--snake-start-x)); height: 50%;
+            border-right: var(--line-width) solid var(--line-color);
+            border-bottom: var(--line-width) solid var(--line-color);
+            border-bottom-right-radius: 50px; box-sizing: border-box;
+        }
+        
+        .snake-curve-bottom-rev {
+            position: absolute; top: 50%; left: var(--snake-start-x);
+            width: calc(50% - var(--snake-start-x)); height: 100%;
+            border-left: var(--line-width) solid var(--line-color);
+            border-top: var(--line-width) solid var(--line-color);
+            border-top-left-radius: 50px; box-sizing: border-box;
+            margin-left: calc(var(--line-width) * -1 + 2px); 
+            margin-top: calc(var(--line-width) * -1); 
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            :root { --line-position: 25px; --snake-start-x: 25px; }
+            h1.name { font-size: 3rem; }
+            .hero { flex-direction: column; padding-top: 120px;}
+            .hero-content { padding: 0 20px; text-align: center; margin-bottom: 50px;}
+            .hero-visual { height: 400px; width: 100%; }
+            #navbar { top: 10px; width: 95%; border-radius: 20px; padding: 8px 0;}
+            .menu-toggle { display: block; } 
+            .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); text-align: center; padding: 20px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 0 0 20px 20px; margin-top: 10px; border: 1px solid rgba(255,255,255,0.8); }
+            .nav-links.active { display: flex; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px;}
+            
+            /* Hudson Responsive */
+            .hudson-grid { grid-template-columns: 1fr; gap: 40px; }
+            
+            /* Mobile Contact Timeline */
+            .contact-timeline::before { left: 29px; top: 0; bottom: 0; }
+            .contact-timeline .t-marker { left: 29px !important; margin: 0; top: 10px; transform: translateX(-50%); }
+            .contact-timeline .timeline-header { padding-left: 60px; } /* Spazio per il pallino */
+            .contact-timeline .t-title { margin-left: 0; }
+
+            /* Mobile Timeline Reset */
+            .timeline-wrapper::before { left: 29px; top: -50px; bottom: -50px; background: var(--line-color); }
+            .timeline-header { flex-wrap: wrap; padding-left: 50px; }
+            .t-date { width: 100%; text-align: left; margin-bottom: 5px; font-size: 0.85rem; color: var(--accent-color);}
+            .t-marker { position: absolute; left: 20px !important; margin: 0; top: 28px; }
+            .t-role-detail { display: block; margin-left: 0; margin-top: 5px; }
+            .t-sep { display: none; } 
+            .timeline-details { margin-left: 0; padding-left: 0; padding-top: 10px; }
+            .timeline-wrapper.mirrored::before { left: 29px; right: auto; top: -50px; bottom: 0; }
+            .timeline-header.mirrored { justify-content: flex-start; padding-left: 50px; }
+            .timeline-header.mirrored .t-content { text-align: left; order: 3; margin-right: 0; }
+            .timeline-header.mirrored .t-marker { order: 2; margin-right: 20px; left: 20px !important; margin-left: 0; }
+            .timeline-header.mirrored .t-date { order: 1; text-align: left; }
+            .timeline-details.mirrored { margin-right: 0; margin-left: 0; padding-right: 0; }
+            .details-content-box { flex-direction: column; }
+            .details-visual { width: 100%; height: 250px; border-radius: 12px 12px 0 0; }
+            .details-text { width: 100%; padding: 25px; }
+
+            /* HIDE SNAKE ON MOBILE */
+            .snake-section { display: none; }
+            /* Connettore dritto mobile */
+            #experience { padding-bottom: 0 !important; }
+            #experience::after {
+                content: ''; position: absolute; left: 29px; bottom: -50px; width: 3px; height: 50px; 
+                background: var(--line-color); display: block;
+            }
+            #experience { padding-bottom: 50px !important; }
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <img class="avatar" src="assets/me.jpg" alt="Ritratto" />
-      <div class="title">
-        <h1>Il tuo nome</h1>
-        <p>
-          Breve bio in 2–3 frasi: ruolo, interessi (es. controllo di sistemi marini, design di scafi, HIL, CFD). Valore che porti e cosa cerchi.
-        </p>
-        <div class="chips">
-          <span class="chip">Hydrodynamics</span>
-          <span class="chip">Control</span>
-          <span class="chip">Python · MATLAB</span>
-          <span class="chip">CAD/CFD</span>
+
+    <header class="hero">
+        <div class="hero-content reveal">
+            <span class="tagline">Ph.D. Engineer & Researcher</span>
+            <h1 class="name">Romolo Di Bernardo</h1>
+            <p class="bio-short"><span id="typewriter-text"></span><span class="cursor"></span></p>
+            <a href="#about" class="btn">Scopri di più</a>
         </div>
-        <nav>
-          <a href="#projects">Progetti</a>
-          <a href="#publications">Pubblicazioni</a>
-          <a href="#contact">Contatti</a>
-          <a class="cta" href="assets/CV_Tuonome.pdf">Scarica CV</a>
-        </nav>
-      </div>
+        <div class="hero-visual reveal d-200">
+            <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80" class="active" alt="Abstract">
+            <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&q=80" alt="Yacht">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80" alt="Tech">
+        </div>
     </header>
 
-    <section id="projects">
-      <div class="section-title">
-        <h2>Progetti selezionati</h2>
-        <a href="https://github.com/tuonomeutente" target="_blank" rel="noreferrer">GitHub ↗</a>
-      </div>
-      <div class="grid projects">
-        <!-- Project Card -->
-        <article class="card">
-          <h3>Foiling Controller — Path Following</h3>
-          <p>Controller a cascata con osservatore; robustezza a disturbi. RMSE -88% vs baseline su percorso curvo.</p>
-          <div class="badges">
-            <span class="badge">Python</span>
-            <span class="badge">MATLAB</span>
-            <span class="badge">Simulation</span>
-          </div>
-          <div class="links">
-            <a href="https://github.com/tuonomeutente/foiling-controller">Repo</a>
-            <a href="#">Demo</a>
-            <a href="#">Report</a>
-          </div>
-          <div class="meta">2025 · ruolo: design & controllo</div>
-        </article>
+    <main class="content-wrapper">
+        
+        <nav id="navbar" class="reveal d-100">
+            <div class="nav-container">
+                <div class="nav-inner">
+                    <a href="#" class="nav-logo">RDB<span>.</span></a> 
+                    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+                    <ul class="nav-links">
+                        <li><a href="#about" onclick="toggleMenu()">Chi Sono</a></li>
+                        <li><a href="#experience" onclick="toggleMenu()">Esperienza</a></li>
+                        <li><a href="#contact" onclick="toggleMenu()">Contatti</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-        <article class="card">
-          <h3>Hull Designer — L/D 7–9</h3>
-          <p>Generatore parametrico di geometrie ottimizzate per resistenza idrodinamica con vincolo L/D 7–9.</p>
-          <div class="badges">
-            <span class="badge">Python</span>
-            <span class="badge">Grasshopper</span>
-            <span class="badge">Geometry</span>
-          </div>
-          <div class="links">
-            <a href="https://github.com/tuonomeutente/hull-designer">Repo</a>
-            <a href="#">Docs</a>
-          </div>
-          <div class="meta">2025 · ruolo: algoritmi & CAD</div>
-        </article>
+        <section class="section bg-alt" id="about">
+            <div class="container about-grid">
+                <div class="about-visual reveal">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80" alt="Romolo Di Bernardo" class="profile-img">
+                </div>
 
-        <article class="card">
-          <h3>Bulb CG Corrector</h3>
-          <p>Script per correzione verticale del baricentro del bulbo con output in mm e parametri interattivi.</p>
-          <div class="badges">
-            <span class="badge">Python</span>
-            <span class="badge">GH Python</span>
-          </div>
-          <div class="links">
-            <a href="https://github.com/tuonomeutente/bulb-cg-corrector">Repo</a>
-          </div>
-          <div class="meta">2025 · ruolo: scripting</div>
-        </article>
-      </div>
-    </section>
+                <div class="about-content-right reveal d-200">
+                    <h2 class="section-title" style="text-align:left; margin-bottom: 30px;">Chi <span>Sono</span></h2>
+                    <div class="about-text">
+                        <p>Sono un <b>Ingegnere Meccanico (Ph.D.)</b> specializzato in aero/idrodinamica e metodi numerici. Attualmente ricercatore Post-doc presso l'<b>Università Federico II di Napoli</b>.</p>
+                        <p>Il mio lavoro colma il divario tra teoria e applicazione pratica, focalizzandosi su sistemi per hydrofoil, simulazioni CFD e ottimizzazione topologica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section id="publications">
-      <div class="section-title">
-        <h2>Pubblicazioni & scritti</h2>
-      </div>
-      <ul class="card pubs">
-        <li>Autore, <em>Titolo</em>, venue/anno. <a href="#">PDF</a> · <a href="#">DOI</a></li>
-        <li>Autore, <em>Titolo</em>, venue/anno. <a href="#">PDF</a></li>
-      </ul>
-    </section>
+        <section class="section bg-white pb-medium pt-small">
+            <div class="container">
+                <h2 class="section-title reveal">Esperienza e <span>Progetti</span></h2>
+            </div>
+        </section>
+        
+        <section class="section bg-white pt-0" id="experience" style="padding-bottom: 0;">
+            <div class="container">
+                <div class="timeline-wrapper">
+                    
+                    <div class="timeline-item reveal d-100" id="exp-0">
+                        <div class="timeline-header" onclick="toggleItem('exp-0')">
+                            <div class="t-date">2025</div>
+                            <div class="t-marker"></div>
+                            <div class="t-content">
+                                <h3 class="t-title">Post-Doctoral Researcher <span class="t-sep">—</span> <span class="t-role-detail">Università Federico II</span></h3>
+                            </div>
+                        </div>
+                        <div class="timeline-details">
+                            <div class="details-inner">
+                                <div class="details-content-box">
+                                    <div class="details-visual" id="c-exp-0">
+                                        <button class="carousel-btn prev-btn" onclick="moveSlide('c-exp-0', -1); event.stopPropagation();">&#10094;</button>
+                                        <button class="carousel-btn next-btn" onclick="moveSlide('c-exp-0', 1); event.stopPropagation();">&#10095;</button>
+                                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80" class="carousel-slide active">
+                                        <img src="https://images.unsplash.com/photo-1531297461136-82af7cc10ada?auto=format&fit=crop&q=80" class="carousel-slide">
+                                    </div>
+                                    <div class="details-text">
+                                        <h4>Design Generativo & Manifattura Additiva</h4>
+                                        <p>Ricerca focalizzata sul progetto NEMESI per l'aerospazio.</p>
+                                        <ul>
+                                            <li>Design for Additive Manufacturing (DfAM).</li>
+                                            <li>Ottimizzazione topologica e topografica.</li>
+                                            <li>Analisi fluido-struttura in collaborazione col LEIN.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <section id="contact">
-      <div class="section-title">
-        <h2>Contatti</h2>
-      </div>
-      <div class="card">
-        <p>Email: <a href="mailto:tuo.nome@dominio">tuo.nome@dominio</a> · LinkedIn: <a href="https://www.linkedin.com/in/tuo-linkedin">/tuo-linkedin</a> · GitHub: <a href="https://github.com/tuonomeutente">@tuonomeutente</a></p>
-      </div>
-    </section>
+                    <div class="timeline-item reveal d-100" id="exp-lab">
+                        <div class="timeline-header" onclick="toggleItem('exp-lab')">
+                            <div class="t-date">Lab Activity</div>
+                            <div class="t-marker"></div>
+                            <div class="t-content">
+                                <h3 class="t-title">Experimental Testing <span class="t-sep">—</span> <span class="t-role-detail">Towing Tank LEIN</span></h3>
+                            </div>
+                        </div>
+                        <div class="timeline-details">
+                            <div class="details-inner">
+                                <div class="details-content-box">
+                                    <div class="details-visual" id="c-exp-lab">
+                                        <button class="carousel-btn prev-btn" onclick="moveSlide('c-exp-lab', -1); event.stopPropagation();">&#10094;</button>
+                                        <button class="carousel-btn next-btn" onclick="moveSlide('c-exp-lab', 1); event.stopPropagation();">&#10095;</button>
+                                        <img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80" class="carousel-slide active">
+                                        <img src="https://images.unsplash.com/photo-1574689049597-106f0a32597a?auto=format&fit=crop&q=80" class="carousel-slide">
+                                    </div>
+                                    <div class="details-text">
+                                        <h4>Sperimentazione in Vasca Navale</h4>
+                                        <p>Attività presso il Laboratorio di Esperienze Idrodinamiche (LEIN).</p>
+                                        <ul>
+                                            <li>Test di resistenza al moto su carene e appendici.</li>
+                                            <li>Analisi sperimentale su hydrofoil bio-ispirati.</li>
+                                            <li>Validazione di modelli numerici CFD.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <p class="footer">© <span id="y"></span> Il tuo nome — Ultimo aggiornamento manuale.
-      <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
-    </p>
-  </div>
+                    <div class="timeline-item reveal d-100" id="exp-teach">
+                        <div class="timeline-header" onclick="toggleItem('exp-teach')">
+                            <div class="t-date">Teaching</div>
+                            <div class="t-marker"></div>
+                            <div class="t-content">
+                                <h3 class="t-title">Academic Mentoring <span class="t-sep">—</span> <span class="t-role-detail">Studenti & Tesi</span></h3>
+                            </div>
+                        </div>
+                        <div class="timeline-details">
+                            <div class="details-inner">
+                                <div class="details-content-box">
+                                    <div class="details-visual" id="c-exp-teach">
+                                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80" class="carousel-slide active">
+                                    </div>
+                                    <div class="details-text">
+                                        <h4>Opportunità per Studenti</h4>
+                                        <p>Supporto alla didattica e supervisione tesi.</p>
+                                        <ul>
+                                            <li><b>Corsi:</b> Istruttore per AVIO Spa (Ottimizzazione Topologica).</li>
+                                            <li><b>Tesi:</b> Disponibilità per tesi su CFD, Hydrofoil design e Additive Manufacturing.</li>
+                                            <li><b>Metodi:</b> Formazione su software Ansys, StarCCM+ e Rhinoceros.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal d-200" id="exp-1" style="margin-bottom: 0;">
+                        <div class="timeline-header" onclick="toggleItem('exp-1')">
+                            <div class="t-date">2023</div>
+                            <div class="t-marker"></div>
+                            <div class="t-content">
+                                <h3 class="t-title">Fluid Dynamic Engineer <span class="t-sep">—</span> <span class="t-role-detail">Freelance</span></h3>
+                            </div>
+                        </div>
+                        <div class="timeline-details">
+                            <div class="details-inner">
+                                <div class="details-content-box">
+                                    <div class="details-visual" id="c-exp-1">
+                                        <button class="carousel-btn prev-btn" onclick="moveSlide('c-exp-1', -1); event.stopPropagation();">&#10094;</button>
+                                        <button class="carousel-btn next-btn" onclick="moveSlide('c-exp-1', 1); event.stopPropagation();">&#10095;</button>
+                                        <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&q=80" class="carousel-slide active">
+                                        <img src="https://images.unsplash.com/photo-1598872368583-45e881b05c29?auto=format&fit=crop&q=80" class="carousel-slide">
+                                    </div>
+                                    <div class="details-text">
+                                        <h4>Consulenza Idrodinamica</h4>
+                                        <p>Attività specializzata per diverse aziende del settore navale:</p>
+                                        <ul>
+                                            <li><b>Dedalo Navi:</b> Design ali hydrofoil e analisi CFD.</li>
+                                            <li><b>Boat Propulsion:</b> Simulazione eliche e scafi plananti.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="snake-section" style="background-color: var(--bg-white);">
+             <div class="container snake-container">
+                 <div class="snake-curve-top"></div>
+                 <div class="snake-curve-bottom"></div>
+             </div>
+        </section>
+
+        <section class="section bg-alt pb-medium no-border-top pt-small no-border-bottom">
+             <div class="container">
+                <h2 class="section-title reveal">Esperienza e <span>Progetti</span></h2>
+             </div>
+        </section>
+        
+        <section class="section bg-alt pt-0 no-border-top" id="experience-mirrored" style="padding-top: 0; padding-bottom: 0;">
+            <div class="container">
+                <div class="timeline-wrapper mirrored">
+                    <div class="timeline-item reveal d-100" id="exp-0-m">
+                        <div class="timeline-header mirrored" onclick="toggleItem('exp-0-m')">
+                            <div class="t-date">2025</div>
+                            <div class="t-marker"></div>
+                            <div class="t-content">
+                                <h3 class="t-title"><span class="t-role-detail" style="margin-left: 0; margin-right: 10px;">Università Federico II</span> <span class="t-sep">—</span> Post-Doctoral Researcher</h3>
+                            </div>
+                        </div>
+                        <div class="timeline-details mirrored">
+                            <div class="details-inner">
+                                <div class="details-content-box">
+                                    <div class="details-visual" id="c-exp-0-m">
+                                        <button class="carousel-btn prev-btn" onclick="moveSlide('c-exp-0-m', -1); event.stopPropagation();">&#10094;</button>
+                                        <button class="carousel-btn next-btn" onclick="moveSlide('c-exp-0-m', 1); event.stopPropagation();">&#10095;</button>
+                                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80" class="carousel-slide active">
+                                        <img src="https://images.unsplash.com/photo-1531297461136-82af7cc10ada?auto=format&fit=crop&q=80" class="carousel-slide">
+                                    </div>
+                                    <div class="details-text">
+                                        <h4>Design Generativo & Manifattura Additiva</h4>
+                                        <p>Ricerca focalizzata sul progetto NEMESI per l'aerospazio.</p>
+                                        <ul>
+                                            <li>Design for Additive Manufacturing (DfAM).</li>
+                                            <li>Ottimizzazione topologica e topografica.</li>
+                                            <li>Analisi fluido-struttura in collaborazione col LEIN.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item reveal d-200" id="exp-1-m" style="margin-bottom: 0;">
+                        <div class="timeline-header mirrored" onclick="toggleItem('exp-1-m')">
+                            <div class="t-date">2023</div>
+                            <div class="t-marker"></div>
+                            <div class="t-content">
+                                <h3 class="t-title"><span class="t-role-detail" style="margin-left: 0; margin-right: 10px;">Freelance</span> <span class="t-sep">—</span> Fluid Dynamic Engineer</h3>
+                            </div>
+                        </div>
+                        <div class="timeline-details mirrored">
+                            <div class="details-inner">
+                                <div class="details-content-box">
+                                    <div class="details-visual" id="c-exp-1-m">
+                                        <button class="carousel-btn prev-btn" onclick="moveSlide('c-exp-1-m', -1); event.stopPropagation();">&#10094;</button>
+                                        <button class="carousel-btn next-btn" onclick="moveSlide('c-exp-1-m', 1); event.stopPropagation();">&#10095;</button>
+                                        <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&q=80" class="carousel-slide active">
+                                        <img src="https://images.unsplash.com/photo-1598872368583-45e881b05c29?auto=format&fit=crop&q=80" class="carousel-slide">
+                                    </div>
+                                    <div class="details-text">
+                                        <h4>Consulenza Idrodinamica</h4>
+                                        <p>Attività specializzata per diverse aziende del settore navale:</p>
+                                        <ul>
+                                            <li><b>Dedalo Navi:</b> Design ali hydrofoil e analisi CFD.</li>
+                                            <li><b>Boat Propulsion:</b> Simulazione eliche e scafi plananti.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="snake-section" style="background-color: var(--bg-alt);">
+             <div class="container snake-container">
+                 <div class="snake-curve-top-rev"></div>
+                 <div class="snake-curve-bottom-rev"></div>
+             </div>
+        </section>
+
+        <section class="section bg-white pt-small" id="contact">
+            <div class="container">
+                <div class="contact-header reveal">
+                    <h2 class="section-title">Get in <span>Touch</span></h2>
+                    <p class="contact-intro">
+                        Sei interessato a collaborazioni di ricerca, consulenze ingegneristiche o opportunità di tesi? 
+                        Non esitare a contattarmi.
+                    </p>
+                </div>
+
+                <div class="hudson-grid">
+                    <div class="contact-left reveal">
+                        
+                        <div class="timeline-wrapper contact-timeline">
+                            <div class="timeline-item c-email">
+                                <a href="mailto:romolo.dibernardo@unicas.it" class="timeline-header">
+                                    <div class="t-marker"></div>
+                                    <div class="t-title">romolo.dibernardo@unicas.it</div>
+                                </a>
+                            </div>
+                            <div class="timeline-item c-email">
+                                <a href="mailto:romolo.dibernardo@unina.it" class="timeline-header">
+                                    <div class="t-marker"></div>
+                                    <div class="t-title">romolo.dibernardo@unina.it</div>
+                                </a>
+                            </div>
+                            <div class="timeline-item c-linkedin">
+                                <a href="#" class="timeline-header">
+                                    <div class="t-marker"></div>
+                                    <div class="t-title">Connect on LinkedIn</div>
+                                </a>
+                            </div>
+                            <div class="timeline-item c-research">
+                                <a href="#" class="timeline-header">
+                                    <div class="t-marker"></div>
+                                    <div class="t-title">Follow Research</div>
+                                </a>
+                            </div>
+                            <div class="timeline-item c-orcid">
+                                <a href="#" class="timeline-header">
+                                    <div class="t-marker"></div>
+                                    <div class="t-title">View Academic Profile</div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-right reveal d-200">
+                        <a href="https://calendar.app.google/kzgjRxeRbYEJHsHe8" target="_blank" class="hudson-btn">
+                            <div class="btn-content">
+                                <h4>Prenota una Call</h4>
+                                <span>Verifica disponibilità su Google Calendar</span>
+                            </div>
+                            <i class="fas fa-calendar-check btn-icon"></i>
+                        </a>
+
+                        <a href="#" class="hudson-btn">
+                            <div class="btn-content">
+                                <h4>Scarica CV</h4>
+                                <span>Formato PDF (Aggiornato 2025)</span>
+                            </div>
+                            <i class="fas fa-download btn-icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer style="background: var(--bg-alt);">
+            <div class="container">
+                <p><b>Romolo Di Bernardo</b> &copy; 2025</p>
+            </div>
+        </footer>
+        
+    </main>
+
+    <script>
+        // FIX SCROLL & HASH
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                history.replaceState(null, null, ' ');
+                window.scrollTo(0, 0);
+            }
+        });
+
+        // SCROLL REVEAL
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // NAVBAR STICKY
+        const navbar = document.getElementById('navbar');
+        const heroSection = document.querySelector('.hero');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > heroSection.offsetHeight - 50) navbar.classList.add('stuck');
+            else navbar.classList.remove('stuck');
+        });
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // TYPEWRITER
+        const phrases = ["Dalla ricerca accademica al design industriale.", "Sviluppo soluzioni avanzate per hydrofoil.", "Design di yacht ibridi e sostenibili.", "Ottimizzazione di strutture biomimetiche."];
+        const textElement = document.getElementById('typewriter-text');
+        let phraseIndex = 0; let charIndex = 0; let isDeleting = false; let typingSpeed = 50;
+
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) { textElement.innerText = currentPhrase.substring(0, charIndex - 1); charIndex--; typingSpeed = 30; } 
+            else { textElement.innerText = currentPhrase.substring(0, charIndex + 1); charIndex++; typingSpeed = 50; }
+            if (!isDeleting && charIndex === currentPhrase.length) { isDeleting = true; typingSpeed = 2000; } 
+            else if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; typingSpeed = 500; }
+            setTimeout(typeWriter, typingSpeed);
+        }
+        
+        const heroImages = document.querySelectorAll('.hero-visual img');
+        let heroIndex = 0;
+        function rotateHero() {
+            heroImages[heroIndex].classList.remove('active');
+            heroIndex = (heroIndex + 1) % heroImages.length;
+            heroImages[heroIndex].classList.add('active');
+        }
+        
+        function toggleItem(id) {
+            const item = document.getElementById(id);
+            if (item.classList.contains('open')) item.classList.remove('open');
+            else item.classList.add('open');
+        }
+
+        function moveSlide(containerId, direction) {
+            const container = document.getElementById(containerId);
+            const slides = container.querySelectorAll('.carousel-slide');
+            let activeIndex = 0;
+            slides.forEach((slide, index) => { if (slide.classList.contains('active')) activeIndex = index; });
+            slides[activeIndex].classList.remove('active');
+            let newIndex = activeIndex + direction;
+            if (newIndex >= slides.length) newIndex = 0;
+            if (newIndex < 0) newIndex = slides.length - 1;
+            slides[newIndex].classList.add('active');
+        }
+
+        window.onload = function() { typeWriter(); setInterval(rotateHero, 4000); };
+    </script>
 </body>
 </html>
