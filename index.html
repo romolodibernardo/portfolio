@@ -36,9 +36,9 @@
             --line-pos: 140px; 
             --snake-start-x: 160px; 
 
-            --exp-line-top: -239px;    
+            --exp-line-top: -290px;    
             --exp-line-bottom: 0px;    
-            --exp-mirror-line-top: -178px;   
+            --exp-mirror-line-top: -176px;   
             --exp-mirror-line-bottom: 0px; 
             
             --font-heading: 'Roboto', sans-serif; 
@@ -67,12 +67,9 @@
         .no-border-top { border-top: none !important; }
         .no-border-bottom { border-bottom: none !important; }
 
-        /* HERO */
-        .hero { display: flex; height: 100vh; align-items: center; position: relative; background: var(--bg-white); z-index: 1; }
-        .hero-content { flex: 1; padding-right: 60px; padding-left: 5%; z-index: 10; }
-        .hero-visual { flex: 1; height: 100vh; position: relative; overflow: hidden; background-color: #cbd5e1; }
-        .hero-visual img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1.5s ease-in-out; }
-        .hero-visual img.active { opacity: 1; }
+        /* HERO - Centered Minimalist */
+        .hero { display: flex; height: 100vh; align-items: center; justify-content: center; position: relative; background: var(--bg-white); z-index: 1; }
+        .hero-content { text-align: center; display: flex; flex-direction: column; align-items: center; padding: 0 20px; z-index: 10; max-width: 800px; margin: 0 auto; }
 
         .tagline { font-family: var(--font-body); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0px; color: var(--accent-color); margin-bottom: 15px; display: block; background: var(--accent-soft); padding: 5px 10px; border-radius: 4px; width: fit-content; }
         h1.name { font-size: 4rem; line-height: 1; margin-bottom: 25px; }
@@ -96,7 +93,7 @@
         .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-main); padding: 5px; }
 
         /* SEZIONI */
-        .section { padding: 100px 0; position: relative; }
+        .section { padding: 100px 0; position: relative; scroll-margin-top: 100px; }
         .section-title { font-size: 3rem; margin-bottom: 0; text-align: center; font-family: var(--font-heading); font-weight: 400; letter-spacing: -0.02em; }
         .section-title span { color: var(--accent-color); font-weight: 400; }
         .about-grid { display: grid; grid-template-columns: 3fr 7fr; gap: 80px; align-items: center;}
@@ -132,7 +129,7 @@
         .sub-bullet-slide { min-width: 100%; display: flex; box-sizing: border-box; }
         
         .details-visual { width: 35%; position: relative; min-height: 320px; background-color: #333; border-radius: 12px 0 0 12px; overflow: hidden; }
-        .details-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .details-visual img, .details-visual video { width: 100%; height: 100%; object-fit: cover; display: block; }
         .details-text { width: 65%; padding: 40px 55px; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; }
         .details-text h4 { margin-top: 0; color: var(--accent-color); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0px; font-size: 1.2rem; margin-bottom: 15px; font-weight: 500;}
         .details-text p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px; line-height: 1.7; text-align: justify; }
@@ -194,7 +191,7 @@
         .contact-header { text-align: center; margin-bottom: 50px; }
         .contact-intro { color: var(--text-muted); line-height: 1.8; max-width: 600px; margin: 0 auto; }
         .contact-timeline { position: relative; padding-bottom: 0; }
-        .contact-timeline::before { content: ''; position: absolute; left: calc(var(--line-pos) - 1px); top: -217px; bottom: 20px; width: var(--line-width); background: var(--line-color); z-index: 0; }
+        .contact-timeline::before { content: ''; position: absolute; left: calc(var(--line-pos) - 1px); top: -191px; bottom: 20px; width: var(--line-width); background: var(--line-color); z-index: 0; }
         .contact-timeline .t-marker { width: 16px; height: 16px; position: absolute; left: var(--line-pos); transform: translateX(-50%); margin: 0; z-index: 2; display: flex; align-items: center; justify-content: center; background-color: white; border: 3px solid var(--text-muted); border-radius: 50%; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .contact-timeline .t-marker::before { display: block; font-size: 20px; color: white; opacity: 0; transform: scale(0); transition: 0.2s; }
         .contact-timeline .timeline-header:hover .t-marker { width: 40px; height: 40px; background-color: var(--accent-color); border-color: var(--accent-color); box-shadow: 0 0 0 6px var(--accent-soft); }
@@ -217,6 +214,32 @@
 
         .snake-curve-top-rev { position: absolute; top: 0; right: var(--snake-start-x); width: calc(50% - var(--snake-start-x)); height: 50%; border-right: var(--line-width) solid var(--line-color); border-bottom: var(--line-width) solid var(--line-color); border-bottom-right-radius: 50px; box-sizing: border-box; }
         .snake-curve-bottom-rev { position: absolute; top: 50%; left: var(--snake-start-x); width: calc(50% - var(--snake-start-x)); height: 100%; border-left: var(--line-width) solid var(--line-color); border-top: var(--line-width) solid var(--line-color); border-top-left-radius: 50px; box-sizing: border-box; margin-left: calc(var(--line-width) * -1 + 2px); margin-top: calc(var(--line-width) * -1); }
+        
+        /* Stile per i tag delle competenze / software */
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .tag {
+            background: var(--bg-alt);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+        .tag:hover {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(234, 88, 12, 0.2);
+        }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
@@ -277,17 +300,12 @@
 </head>
 <body>
 
-    <header class="hero">
+   <header class="hero">
         <div class="hero-content reveal">
             <span class="tagline">Ph.D. Engineer & Researcher</span>
             <h1 class="name">Romolo Di Bernardo</h1>
             <p class="bio-short"><span id="typewriter-text"></span><span class="cursor"></span></p>
             <a href="#about" class="btn">Learn more</a>
-        </div>
-        <div class="hero-visual reveal d-200">
-            <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80" class="active" alt="Abstract">
-            <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&q=80" alt="Yacht">
-            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80" alt="Tech">
         </div>
     </header>
 
@@ -316,8 +334,8 @@
                 <div class="about-content-right reveal d-200">
                     <h2 class="section-title" style="text-align:left; margin-bottom: 30px;">About <span>Me</span></h2>
                     <div class="about-text">
-                        <p>I am a <b>Mechanical Engineer (Ph.D.)</b> specialized in aero/hydrodynamics and numerical methods. Currently working as a Postdoctoral Researcher at the <b>University of Naples Federico II</b>.</p>
-                        <p>My work bridges the gap between theory and practical application, focusing on hydrofoil systems, CFD simulations, and topology optimization.</p>
+                        <p>I am a <b>Mechanical Engineer (Ph.D.)</b> in Generative Design and Biomimetics at the <b>University of Naples Federico II</b>. My expertise focuses on advanced design methods, fluid dynamics, and Computer-aided Engineering (CAE). </p>
+                        <p>My work bridges the gap between theory and practical application.</p>
                     </div>
                 </div>
             </div>
@@ -350,46 +368,49 @@
                                     
                                     <div class="slider-track" id="track-exp-ind" data-index="0">
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="visio.jpg" alt="Visio Electric"></div>
+                                            <div class="details-visual">
+                                                <img src="visio.jpg" alt="Visio">
+                                            </div>
                                             <div class="details-text">
                                                 <h4><a href="https://www.visioelectric.it" target="_blank" class="dynamic-link">Visio Electric S.r.l.</a></h4>
-                                                <p>Born as an idea between two university colleagues, i held different roles in the company, as well as  managing, technical responsible and mentoring teams.</p>
+                                                <p>Born as an idea between two friends and university colleagues, I held different roles in the company, as well as  managing, R&D technical responsible and mentoring teams.</p>
                                             </div>
                                         </div>
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&q=80" alt="Dedalo Navi"></div>
+                                            <div class="details-visual"> <video src="dedalo.mp4" autoplay loop muted playsinline></video></div>
                                             <div class="details-text">
                                                 <h4><a href="https://www.dedalonavi.it" target="_blank" class="dynamic-link">Dedalo Navi S.r.l.</a></h4>
-                                                <p>I collaborate for R&D designing and performing CFD simulations specially for hydrofoil vessels.</p>
+                                                <p>I collaborate for R&D, my work focus on designing and testing hydrofoil vessels geometries through CFD simulations.</p>
                                             </div>
                                         </div>
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1531297461136-82af7cc10ada?auto=format&fit=crop&q=80" alt="Boat Propulsion"></div>
+                                            <div class="details-visual"> <video src="prop.mp4" autoplay loop muted playsinline></video></div>
                                             <div class="details-text">
                                                 <h4><a href="https://www.boatpropulsionitalia.com" target="_blank" class="dynamic-link">Boat Propulsion Italia S.r.l.</a></h4>
-                                                <p>I collaborate for R&D performing advanced CFD campaigns to analyse and
-                                                    optimise propulsion systems, including open-water and ducted propellers, analyses of planing hulls.</p>
+                                                <p>We collaborate for R&D performing CFD campaigns to analyse propellers including open-water and ducted propellers, and analyses of planing hulls.</p>
                                             </div>
                                         </div>
                                         <div class="sub-bullet-slide">
                                             <div class="details-visual"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80" alt="Italian Armed Forces"></div>
                                             <div class="details-text">
-                                                <h4>Italian Armed Forces</h4>
-                                                <p>[Insert your description here]</p>
+                                                <h4>Military</h4>
+                                                <p>I worked to design infrastructure systems, including mooring systems for the Guardia di Finanza Naval School and high-power charging stations for military vessels, ensuring reliability under operational constraints.</p>
                                             </div>
                                         </div>
                                         <div class="sub-bullet-slide">
                                             <div class="details-visual"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80" alt="Consorzio SCIRE"></div>
                                             <div class="details-text">
                                                 <h4><a href="https://www.consorzio-scire.com" target="_blank" class="dynamic-link">Consorzio SCIRE</a></h4>
-                                                <p>Developed a custom workflow utilising Python scripting and Grasshopper to interface with Meta Quest VR hardware to analyse big data for astrophysics.</p>
+                                                <p>This experience gave me the opportunity to develop a custom workflow utilising Python scripting and Grasshopper to interface with Meta Quest VR hardware to analyse big data for astrophysics.</p>
                                             </div>
                                         </div>
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80" alt="AVIO SPA"></div>
+                                            <div class="details-visual"> <video src="insi.mp4" autoplay loop muted playsinline></video></div>
                                             <div class="details-text">
-                                                <h4>Technical Instructor IN.SI. For AVIO SPA</h4>
-                                                <p>[Insert your description here]</p>
+                                                <h4>Technical Instructor IN.SI. for AVIO SPA</h4>
+                                                <p>I delivered the specialised course "Topology and Structural Optimization Procedures" to professional aerospace and
+aeronautical engineers. The course deal on advanced design methodologies, focusing on Finite Element Analysis, Generative Design and Design for Additive Manufacturing
+(DfAM) for high-performance and lightweight components.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -416,10 +437,10 @@
                                    <div class="slider-track" id="track-exp-ath" data-index="0">
                                         
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1598872368583-45e881b05c29?auto=format&fit=crop&q=80" alt="Federico Colaninno"></div>
+                                            <div class="details-visual"><img src="fede.jpg" alt="Federico Colaninno"></div>
                                             <div class="details-text">
                                                 <h4><a href="https://it.wikipedia.org/wiki/Federico_Colaninno" target="_blank" class="dynamic-link">Federico Colaninno</a></h4>
-                                                <p><a href="https://it.wikipedia.org/wiki/Federico_Colaninno" target="_blank" class="dynamic-link">Federico Colaninno</a> is a multiple-time World, European, and Italian champion across various sailing classes, and winner of the 2024 Youth America’s Cup with Luna Rossa Prada Pirelli. We worked together applying Reverse Engineering and advanced CFD solvers to deeply optimize his racing sailboats.</p>
+                                                <p><a href="https://it.wikipedia.org/wiki/Federico_Colaninno" target="_blank" class="dynamic-link">Federico Colaninno</a> is a multiple-time World, European, and Italian champion across various sailing classes, and winner of the 2024 Youth America’s Cup with Luna Rossa Prada Pirelli. We worked together applying Reverse Engineering and CFD analyses to deeply optimize his racing sailboats.</p>
                                             </div>
                                         </div>
                                         
@@ -427,7 +448,7 @@
                                             <div class="details-visual"><img src="gigi.png" alt="ITA98"></div>
                                             <div class="details-text">
                                                 <h4>ITA98 Ugolini-Giubilei</h4>
-                                                <p><a href="https://it.wikipedia.org/wiki/Gianluigi_Ugolini" target="_blank" class="dynamic-link">Gianluigi Ugolini</a> and <a href="https://it.wikipedia.org/wiki/Maria_Giubilei" target="_blank" class="dynamic-link">Maria Giubilei</a> (ITA98) are multiple-time World Champions and 2024 Youth America’s Cup winners with Luna Rossa Prada Pirelli. I collaborated directly with them to redesign custom Nacra 17 components, aiming to enhance overall functionality and minimize both aero and hydrodynamic drag.</p>
+                                                <p><a href="https://it.wikipedia.org/wiki/Gianluigi_Ugolini" target="_blank" class="dynamic-link">Gianluigi Ugolini</a> and <a href="https://it.wikipedia.org/wiki/Maria_Giubilei" target="_blank" class="dynamic-link">Maria Giubilei</a> (ITA98) are multiple-time U24 World Champions and 2024 Youth America’s Cup winners with Luna Rossa Prada Pirelli. I'm collaborating to redesign custom Nacra 17 components, aiming to enhance overall functionality and go faster looking for LA2028 Olympics!</p>
                                             </div>
                                         </div>
 
@@ -452,21 +473,54 @@
                                     <button class="slider-btn prev-btn" onclick="moveSubBullet('track-exp-skills', -1); event.stopPropagation();">&#10094;</button>
                                     <button class="slider-btn next-btn" onclick="moveSubBullet('track-exp-skills', 1); event.stopPropagation();">&#10095;</button>
                                     
-                                    <div class="slider-track" id="track-exp-skills" data-index="0">
+                                   <div class="slider-track" id="track-exp-skills" data-index="0">
+                                        
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1531297461136-82af7cc10ada?auto=format&fit=crop&q=80" alt="Parametric Design"></div>
+                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80" alt="Technical Expertise"></div>
                                             <div class="details-text">
-                                                <h4>Parametric Design</h4>
-                                                <p>[Insert your description here]</p>
+                                                <h4>Engineering & R&D</h4>
+                                                <ul style="margin-bottom: 0; padding-left: 15px;">
+                                                    <li style="margin-bottom: 8px;"><b>Advanced Simulation:</b> CFD, FEA, FSI (Fluid-Structure Interaction) & Topology and Topography Optimization.</li>
+                                                    <li style="margin-bottom: 8px;"><b>Design & Modelling:</b> Algorithmic & Parametric Modelling, Generative Design, DfAM.</li>
+                                                    <li style="margin-bottom: 8px;"><b>Materials & Testing:</b> Lightweight Structures, Experimental Data Correlation.</li>
+                                                    <li><b>R&D Approach:</b> Bio-inspired Design, Reverse Engineering, Rapid Prototyping.</li>
+                                                </ul>
                                             </div>
                                         </div>
+
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80" alt="CAE"></div>
+                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1531297461136-82af7cc10ada?auto=format&fit=crop&q=80" alt="Software"></div>
                                             <div class="details-text">
-                                                <h4>CAE (Computer-Aided Engineering)</h4>
-                                                <p>[Insert your description here]</p>
+                                                <h4>Software & Ecosystem</h4>
+                                                <p style="font-style: italic;">(Main software used)</p>
+                                                
+                                                <div class="skill-tags">
+                                                    <span class="tag">Star CCM+</span>
+                                                    <span class="tag">Ansys</span>
+                                                    <span class="tag">Siemens NX</span>
+                                                    <span class="tag">Solidworks</span>
+                                                    <span class="tag">Rhinoceros & Grasshopper (licensed user)</span>
+                                                    <span class="tag">Fusion360</span>
+                                                    <span class="tag">Matlab & Simulink</span>
+                                                    <span class="tag">Siemens Heeds</span>
+                                                    <span class="tag">nTop</span>
+                                                </div>
                                             </div>
                                         </div>
+
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80" alt="Leadership"></div>
+                                            <div class="details-text">
+                                                <h4>Leadership & Soft Skills</h4>
+                                                <ul style="margin-bottom: 0; padding-left: 15px;">
+                                                    <li style="margin-bottom: 8px;"><b>Leadership:</b> Mentored R&D teams across academia, industry, and startups.</li>
+                                                    <li style="margin-bottom: 8px;"><b>Project Management:</b> Coordinated multidisciplinary workflows from concept to prototyping.</li>
+                                                    <li style="margin-bottom: 8px;"><b>Communication:</b> Presented at international conferences & managed scientific publications.</li>
+                                                    <li><b>Problem Solving:</b> Applied lateral thinking to overcome complex engineering constraints.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -507,7 +561,7 @@
                                 <div class="horizontal-slider-wrapper">
                                     <div class="slider-track" id="track-m-exp-res" data-index="0">
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80" alt="Postdoc"></div>
+                                            <div class="details-visual"><img src="postdoc.jpg" alt="Postdoc"></div>
                                             <div class="details-text">
                                                 <h4>Postdoctoral Position</h4>
                                                 <p>Generative and Biomimetics Design for Additive Manufacturing of Aeronautical Structures in the context of the NEMESI project (New
@@ -540,9 +594,9 @@ Engineering and Manufacturing Enhanced System Innovation) with Leonardo S.p.A.</
                                     
                                     <div class="slider-track" id="track-m-exp-edu" data-index="0">
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80" alt="Graduation"></div>
+                                            <div class="details-visual"><video src="Phdthesis.mov" autoplay loop muted playsinline></video></div>
                                             <div class="details-text">
-                                                <h4>PhD in Methods, Models, and Technologies for Engineering</h4>
+                                                <h4>Ph.D. in Methods, Models, and Technologies for Engineering</h4>
                                                 <p><em>My thesis was "Development of Algorithmic and Parametric Methods for the Design of Sustainable Hydrofoil Boats"</em></p>
                                                 <p>Visiting Researcher at CDRSP (Politécnico de Leiria, Portugal) | Experimental & Numerical Analysis (University of Naples Federico II) | Industrial R&D Placement – Rivale Yacht Srl, Valerio Rivellini.</p>
                                             </div>
@@ -581,24 +635,25 @@ Engineering and Manufacturing Enhanced System Innovation) with Leonardo S.p.A.</
                                     
                                     <div class="slider-track" id="track-m-exp-cert" data-index="0">
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80" alt="Harvard"></div>
+                                            <div class="details-visual"><img src="CS50.png" alt="Harvard"></div>
                                             <div class="details-text">
-                                                <h4>Harvard computer science</h4>
-                                                <p>[Insert your description here]</p>
+                                                <h4>Harvard CS50</h4>
+                                                <p>This course allows me to go into algorithms, data structures, and computational thinking. I gained proficiency in C and Python programming, applying code-based problem solving to complex scenarios.</p>
                                             </div>
                                         </div>
                                         <div class="sub-bullet-slide">
                                             <div class="details-visual"><img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80" alt="Engineer"></div>
                                             <div class="details-text">
                                                 <h4>Licensed professional engineer</h4>
-                                                <p>[Insert your description here]</p>
+                                                <p>State examination for professional practice, Order of Engineers of Frosinone, Italy.</p>
                                             </div>
                                         </div>
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1531297461136-82af7cc10ada?auto=format&fit=crop&q=80" alt="Simulation"></div>
+                                            <div class="details-visual"><img src="Cornell.png" alt="Simulation"></div>
                                             <div class="details-text">
                                                 <h4>A Hands-on introduction to engineering simulation</h4>
-                                                <p>[Insert your description here]</p>
+                                                <p>This course delivered from Cornell University was my first step in numerical simulation. I started to mastered fundamentals of Finite Element Analysis (FEA) and Computational Fluid Dynamics (CFD) using Ansys.
+</p>
                                             </div>
                                         </div>
                                     </div>
@@ -656,17 +711,17 @@ Engineering and Manufacturing Enhanced System Innovation) with Leonardo S.p.A.</
                                             </div>
                                         </div>
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80" alt="Symposium"></div>
+                                            <div class="details-visual"><img src="phr_gaeta.png" alt="Symposium"></div>
                                             <div class="details-text">
-                                                <h4>Organizer of International PhD Symposium</h4>
-                                                <p>[Insert your description here]</p>
+                                                <h4>General Coordinator of International PhD Symposium</h4>
+                                                <p>I partecipate as General Coordinator and Co-Editor for the Conference Proceedings.</p>
                                             </div>
                                         </div>
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80" alt="PHR17"></div>
+                                            <div class="details-visual"><img src="phr_gaeta.png" alt="Symposium"></div>
                                             <div class="details-text">
                                                 <h4>Organizer of PHR17</h4>
-                                                <p>[Insert your description here]</p>
+                                                <p>The conference series deal with the Photosynthesis and Hydrogen Energy Research for Sustainability</p>
                                             </div>
                                         </div>
                                     </div>
@@ -782,9 +837,9 @@ Engineering and Manufacturing Enhanced System Innovation) with Leonardo S.p.A.</
 
         // TYPEWRITER
         const phrases = [
-            "From academic research to industrial design.", 
+            "From academic research to industrial design and competition.", 
             "Developing advanced solutions for hydrofoils.", 
-            "Hybrid and sustainable yacht design.", 
+            "Hybrid and sustainable design.", 
             "Optimization of biomimetic structures."
         ];
         const textElement = document.getElementById('typewriter-text');
@@ -799,9 +854,7 @@ Engineering and Manufacturing Enhanced System Innovation) with Leonardo S.p.A.</
             setTimeout(typeWriter, typingSpeed);
         }
         
-        const heroImages = document.querySelectorAll('.hero-visual img');
-        let heroIndex = 0;
-        function rotateHero() { heroImages[heroIndex].classList.remove('active'); heroIndex = (heroIndex + 1) % heroImages.length; heroImages[heroIndex].classList.add('active'); }
+        
         
         // ACCORDION LOGIC
         function toggleItem(id) {
@@ -843,7 +896,7 @@ Engineering and Manufacturing Enhanced System Innovation) with Leonardo S.p.A.</
             }
         }
 
-        window.onload = function() { typeWriter(); setInterval(rotateHero, 4000); };
+        window.onload = function() { typeWriter(); };
     </script>
 </body>
 </html>
