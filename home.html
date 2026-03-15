@@ -242,11 +242,16 @@
         }
 
         /* RESPONSIVE */
+
         @media (max-width: 768px) {
             :root { --line-position: 25px; --snake-start-x: 25px; }
             h1.name { font-size: 3rem; }
-            .hero { flex-direction: column; padding-top: 120px;}
-            .hero-content { padding: 0 20px; text-align: center; margin-bottom: 50px; display: flex; flex-direction: column; align-items: center; width: 100%; box-sizing: border-box; }
+            
+            /* -- ECCO LA MODIFICA PER CENTRARE IL TESTO -- */
+            .hero { flex-direction: column; padding-top: 0; justify-content: center; height: 100vh; }
+            .hero-content { padding: 0 20px; text-align: center; margin-bottom: 0; display: flex; flex-direction: column; align-items: center; width: 100%; box-sizing: border-box; }
+       
+            
             .tagline { display: inline-block; margin-left: 0; margin-right: 0; width: auto; }
             p.bio-short { width: 100%; max-width: 100%; }
             .hero-visual { height: 400px; width: 100%; }
@@ -257,18 +262,24 @@
             .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px;}
             .hudson-grid { grid-template-columns: 1fr; gap: 40px; }
             .contact-left { text-align: center; }
-            .contact-timeline::before { left: 29px; top: 0; bottom: 0; }
+            .contact-timeline::before { left: 29px; top: -100; bottom: 0; }
             .contact-timeline .t-marker { left: 29px !important; margin: 0; top: 10px; transform: translateX(-50%); }
             .contact-timeline .timeline-header { padding-left: 60px; } 
             .contact-timeline .t-title { margin-left: 0; }
-            .timeline-wrapper::before { left: 29px; top: -242px; bottom: -50px; background: var(--line-color); }
+            #experience .timeline-wrapper::before { left: 29px; 
+    top: -242px; /* Modifica questo per alzare/abbassare l'inizio della PRIMA linea */
+    bottom: -50px; /* Modifica questo per alzare/abbassare la fine della PRIMA linea */
+    background: var(--line-color); }
             .timeline-header { flex-wrap: wrap; padding-left: 50px; }
             .t-date { width: 100%; text-align: left; margin-bottom: 5px; font-size: 0.85rem; color: var(--accent-color);}
             .t-marker { position: absolute; left: 20px !important; margin: 0; top: 28px; }
             .t-role-detail { display: block; margin-left: 0; margin-top: 5px; }
             .t-sep { display: none; } 
             .timeline-details { margin-left: 0; padding-left: 0; padding-top: 10px; }
-            .timeline-wrapper.mirrored::before { left: 29px; right: auto; top: -176px; bottom: 0; }
+            .timeline-wrapper.mirrored::before { left: 29px; 
+                                                right: auto; 
+                                                top: -176px;  /* Modifica questo per alzare/abbassare l'inizio della SECONDA linea */
+                                                bottom: 0; }
             .timeline-header.mirrored { justify-content: flex-start; padding-left: 50px; }
             .timeline-header.mirrored .t-content { text-align: left; order: 3; margin-right: 0; }
             .timeline-header.mirrored .t-marker { order: 2; margin-right: 20px; left: 20px !important; margin-left: 0; }
@@ -334,7 +345,7 @@
                 <div class="about-content-right reveal d-200">
                     <h2 class="section-title" style="text-align:left; margin-bottom: 30px;">About <span>Me</span></h2>
                     <div class="about-text">
-                        <p>I am a <b>Mechanical Engineer (Ph.D.)</b> in Generative Design and Biomimetics at the <b>University of Naples Federico II</b>. My expertise focuses on advanced design methods, fluid dynamics, and Computer-aided Engineering (CAE). </p>
+                        <p>I am a <b>Mechanical Engineer (Ph.D.)</b> and researcher in Generative Design and Biomimetics for aerospace applications at the <b>University of Naples Federico II</b>. My expertise focuses on advanced design methods, fluid dynamics, and Computer-aided Engineering (CAE). </p>
                         <p>My work bridges the gap between theory and practical application.</p>
                     </div>
                 </div>
@@ -391,14 +402,14 @@
                                             </div>
                                         </div>
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80" alt="Italian Armed Forces"></div>
+                                            <div class="details-visual"><img src="milit.jpeg" alt="Italian Armed Forces"></div>
                                             <div class="details-text">
                                                 <h4>Military</h4>
                                                 <p>I worked to design infrastructure systems, including mooring systems for the Guardia di Finanza Naval School and high-power charging stations for military vessels, ensuring reliability under operational constraints.</p>
                                             </div>
                                         </div>
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80" alt="Consorzio SCIRE"></div>
+                                            <div class="details-visual"><img src="scire.jpg" alt="Consorzio SCIRE"></div>
                                             <div class="details-text">
                                                 <h4><a href="https://www.consorzio-scire.com" target="_blank" class="dynamic-link">Consorzio SCIRE</a></h4>
                                                 <p>This experience gave me the opportunity to develop a custom workflow utilising Python scripting and Grasshopper to interface with Meta Quest VR hardware to analyse big data for astrophysics.</p>
@@ -460,7 +471,7 @@ aeronautical engineers. The course deal on advanced design methodologies, focusi
 
                     <div class="timeline-item reveal d-300" id="exp-skills" style="margin-bottom: 0;">
                         <div class="timeline-header" onclick="toggleItem('exp-skills')">
-                            <div class="t-date">Skills</div>
+                            <div class="t-date"> </div>
                             <div class="t-marker"></div>
                             <div class="t-content">
                                 <h3 class="t-title">Skills and Software Used <span class="t-sep">—</span> <span class="t-role-detail">Technical Tools</span></h3>
@@ -476,7 +487,7 @@ aeronautical engineers. The course deal on advanced design methodologies, focusi
                                    <div class="slider-track" id="track-exp-skills" data-index="0">
                                         
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80" alt="Technical Expertise"></div>
+                                            <div class="details-visual"><video src="environment.mp4" autoplay loop muted playsinline></video></div>
                                             <div class="details-text">
                                                 <h4>Engineering & R&D</h4>
                                                 <ul style="margin-bottom: 0; padding-left: 15px;">
@@ -489,7 +500,7 @@ aeronautical engineers. The course deal on advanced design methodologies, focusi
                                         </div>
 
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1531297461136-82af7cc10ada?auto=format&fit=crop&q=80" alt="Software"></div>
+                                            <div class="details-visual"><img src="softwares.png" alt="Software"></div>
                                             <div class="details-text">
                                                 <h4>Software & Ecosystem</h4>
                                                 <p style="font-style: italic;">(Main software used)</p>
@@ -550,7 +561,7 @@ aeronautical engineers. The course deal on advanced design methodologies, focusi
                     
                     <div class="timeline-item reveal d-100" id="m-exp-res">
                         <div class="timeline-header mirrored" onclick="toggleItem('m-exp-res')">
-                            <div class="t-date">Since 2024</div>
+                            <div class="t-date">Since 2025</div>
                             <div class="t-marker"></div>
                             <div class="t-content">
                                 <h3 class="t-title"><span class="t-role-detail" style="margin-left: 0; margin-right: 10px;">University of Naples Federico II</span> <span class="t-sep">—</span> Postdoctoral Position</h3>
@@ -565,7 +576,7 @@ aeronautical engineers. The course deal on advanced design methodologies, focusi
                                             <div class="details-text">
                                                 <h4>Postdoctoral Position</h4>
                                                 <p>Generative and Biomimetics Design for Additive Manufacturing of Aeronautical Structures in the context of the NEMESI project (New
-Engineering and Manufacturing Enhanced System Innovation) with Leonardo S.p.A.</p>
+Engineering and Manufacturing Enhanced System Innovation) with Leonardo S.p.A. Ref. prof. Antonio Gloria.</p>
                                                     <div class="details-meta">
                                                     <span><i class="fas fa-map-marker-alt"></i> Centro Servizi Metrologici Avanzati</span>
                                                 </div>
@@ -620,7 +631,7 @@ Engineering and Manufacturing Enhanced System Innovation) with Leonardo S.p.A.</
 
                     <div class="timeline-item reveal d-300" id="m-exp-cert">
                         <div class="timeline-header mirrored" onclick="toggleItem('m-exp-cert')">
-                            <div class="t-date">Titles</div>
+                            <div class="t-date">Since 2020</div>
                             <div class="t-marker"></div>
                             <div class="t-content">
                                 <h3 class="t-title"><span class="t-role-detail" style="margin-left: 0; margin-right: 10px;">Certifications</span> <span class="t-sep">—</span> Titles and Licenses</h3>
@@ -664,7 +675,7 @@ Engineering and Manufacturing Enhanced System Innovation) with Leonardo S.p.A.</
 
                     <div class="timeline-item reveal d-400" id="m-exp-pub">
                         <div class="timeline-header mirrored" onclick="toggleItem('m-exp-pub')">
-                            <div class="t-date">Publications</div>
+                            <div class="t-date">Since 2021</div>
                             <div class="t-marker"></div>
                             <div class="t-content">
                                 <h3 class="t-title"><span class="t-role-detail" style="margin-left: 0; margin-right: 10px;">Research</span> <span class="t-sep">—</span> Selected Publications</h3>
@@ -689,7 +700,7 @@ Engineering and Manufacturing Enhanced System Innovation) with Leonardo S.p.A.</
 
                     <div class="timeline-item reveal d-500" id="m-exp-proj" style="margin-bottom: 0;">
                         <div class="timeline-header mirrored" onclick="toggleItem('m-exp-proj')">
-                            <div class="t-date">Projects</div>
+                            <div class="t-date">Since 2021</div>
                             <div class="t-marker"></div>
                             <div class="t-content">
                                 <h3 class="t-title"><span class="t-role-detail" style="margin-left: 0; margin-right: 10px;">Leadership</span> <span class="t-sep">—</span> Academic Work and Projects</h3>
@@ -711,7 +722,7 @@ Engineering and Manufacturing Enhanced System Innovation) with Leonardo S.p.A.</
                                             </div>
                                         </div>
                                         <div class="sub-bullet-slide">
-                                            <div class="details-visual"><img src="phr_gaeta.png" alt="Symposium"></div>
+                                            <div class="details-visual"><img src="phdsymp.jpeg" alt="Symposium"></div>
                                             <div class="details-text">
                                                 <h4>General Coordinator of International PhD Symposium</h4>
                                                 <p>I partecipate as General Coordinator and Co-Editor for the Conference Proceedings.</p>
@@ -766,19 +777,19 @@ Engineering and Manufacturing Enhanced System Innovation) with Leonardo S.p.A.</
                                 </a>
                             </div>
                             <div class="timeline-item c-linkedin reveal d-300">
-                                <a href="#" class="timeline-header">
+                                <a href="https://www.linkedin.com/in/romolodibernardo/" class="timeline-header">
                                     <div class="t-marker"></div>
                                     <div class="t-title">Connect on LinkedIn</div>
                                 </a>
                             </div>
                             <div class="timeline-item c-research reveal d-400">
-                                <a href="#" class="timeline-header">
+                                <a href="https://www.researchgate.net/profile/Romolo-Di-Bernardo" class="timeline-header">
                                     <div class="t-marker"></div>
                                     <div class="t-title">Follow Research</div>
                                 </a>
                             </div>
                             <div class="timeline-item c-orcid reveal d-500">
-                                <a href="#" class="timeline-header">
+                                <a href="https://scholar.google.com/citations?user=ydUTHT8AAAAJ&hl=it" class="timeline-header">
                                     <div class="t-marker"></div>
                                     <div class="t-title">View Academic Profile</div>
                                 </a>
@@ -794,7 +805,7 @@ Engineering and Manufacturing Enhanced System Innovation) with Leonardo S.p.A.</
                             </div>
                             <i class="fas fa-calendar-check btn-icon"></i>
                         </a>
-                        <a href="#" class="hudson-btn reveal d-400">
+                        <a href="cv_2026_long.pdf" class="hudson-btn reveal d-400">
                             <div class="btn-content">
                                 <h4>Download CV</h4>
                                 <span>PDF Format (Updated)</span>

@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romolo Di Bernardo - Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --bg-white: #ffffff;
+            --bg-alt: #f1f5f9; 
+            --bg-snake: #e0f7fa; 
+            
+            --text-main: #1e293b; 
+            --text-muted: #64748b; 
+            
+            --accent-color: #ea580c; 
+            --accent-soft: rgba(234, 88, 12, 0.15); 
+            
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --glass-border: 1px solid rgba(255, 255, 255, 1);
+            --glass-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            
+            --line-color: rgba(30, 41, 59, 0.15); 
+            --line-width: 3px; 
+            --line-pos: 140px; 
+            --snake-start-x: 160px; 
+
+            --exp-line-top: -290px;    
+            --exp-line-bottom: 0px;    
+            --exp-mirror-line-top: -176px;   
+            --exp-mirror-line-bottom: 0px; 
+            
+            --font-heading: 'Roboto', sans-serif; 
+            --font-body: 'Space Mono', monospace;   
+        }
+
+        body {
+            margin: 0; font-family: var(--font-body); background-color: var(--bg-white);
+            color: var(--text-main); line-height: 1.6; overflow-x: hidden; font-size: 14px; 
+            opacity: 0; animation: pageFadeIn 0.5s ease forwards 0.2s;
+        }
+        @keyframes pageFadeIn { to { opacity: 1; } }
+
+        h1, h2 { margin: 0; font-family: var(--font-heading); font-weight: 400; letter-spacing: -0.02em; color: var(--text-main); }
+        h3 { margin: 0; font-family: var(--font-body); font-weight: 400; letter-spacing: -0.03em; color: var(--text-main); }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; position: relative; }
+        
+        .bg-white { background-color: var(--bg-white); }
+        .bg-alt { background-color: var(--bg-alt); }
+
+        .pb-0 { padding-bottom: 0 !important; }
+        .pt-0 { padding-top: 0 !important; }
+        .pt-small { padding-top: 40px !important; } 
+        .pb-medium { padding-bottom: 60px !important; }
+        .no-border-top { border-top: none !important; }
+        .no-border-bottom { border-bottom: none !important; }
+
+        /* HERO - Centered Minimalist */
+        .hero { display: flex; height: 100vh; align-items: center; justify-content: center; position: relative; background: var(--bg-white); z-index: 1; }
+        .hero-content { text-align: center; display: flex; flex-direction: column; align-items: center; padding: 0 20px; z-index: 10; max-width: 800px; margin: 0 auto; }
+
+        .tagline { font-family: var(--font-body); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0px; color: var(--accent-color); margin-bottom: 15px; display: block; background: var(--accent-soft); padding: 5px 10px; border-radius: 4px; width: fit-content; }
+        h1.name { font-size: 4rem; line-height: 1; margin-bottom: 25px; }
+        p.bio-short { font-family: var(--font-body); font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; max-width: 550px; min-height: 3.6em; }
+        .cursor { display: inline-block; width: 10px; height: 1.2em; background-color: var(--accent-color); vertical-align: bottom; animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .btn { display: inline-block; font-family: var(--font-body); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; background-color: var(--text-main); color: white; padding: 15px 35px; border-radius: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+        .btn:hover { background-color: var(--accent-color); transform: translateY(-2px); }
+
+        /* NAVBAR */
+        .content-wrapper { position: relative; z-index: 2; background-color: var(--bg-alt); padding-top: 30px; padding-bottom: 50px; }
+        #navbar { position: sticky; top: 20px; z-index: 1000; width: 90%; max-width: 1000px; margin: 0 auto 20px auto; padding: 12px 0; background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 1); border-radius: 50px; box-shadow: var(--glass-shadow); transition: border-color 0.4s ease, box-shadow 0.4s ease; }
+        #navbar.stuck { border-color: var(--accent-color); box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.15); }
+        .nav-container { padding: 0 30px; }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-family: var(--font-heading); font-weight: 500; font-size: 1.5rem; color: var(--text-main); letter-spacing: -1px; }
+        .nav-logo span { color: var(--accent-color); } 
+        .nav-links { list-style: none; margin: 0; padding: 0; display: flex; gap: 30px; }
+        .nav-links a { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0px;}
+        .nav-links a:hover { color: var(--accent-color); }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-main); padding: 5px; }
+
+        /* SEZIONI */
+        .section { padding: 100px 0; position: relative; scroll-margin-top: 100px; }
+        .section-title { font-size: 3rem; margin-bottom: 0; text-align: center; font-family: var(--font-heading); font-weight: 400; letter-spacing: -0.02em; }
+        .section-title span { color: var(--accent-color); font-weight: 400; }
+        .about-grid { display: grid; grid-template-columns: 3fr 7fr; gap: 80px; align-items: center;}
+        .about-text { font-size: 1rem; color: var(--text-muted); line-height: 1.8; text-align: justify; }
+        .about-text b { color: var(--text-main); font-weight: 700; }
+
+        .profile-img { width: 100%; max-width: 280px; height: auto; border-radius: 12px; border: var(--line-width) solid var(--line-color); display: block; margin: 0 auto; object-fit: cover; aspect-ratio: 3/4; }
+
+        /* --- TIMELINE LEFT --- */
+        .timeline-wrapper { position: relative; padding-bottom: 0; }
+        .timeline-wrapper::before { content: ''; position: absolute; left: var(--line-pos); top: var(--exp-line-top); bottom: var(--exp-line-bottom); width: var(--line-width); background: var(--line-color); z-index: 0; }
+
+        .timeline-item { position: relative; margin-bottom: 50px; }
+        .timeline-item:last-child { margin-bottom: 0; padding-bottom: 50px; }
+
+        .timeline-header { display: flex; align-items: baseline; cursor: pointer; position: relative; z-index: 1; }
+        .t-date { width: 110px; text-align: right; font-weight: 700; font-size: 0.9rem; color: var(--text-muted); margin-right: 30px; flex-shrink: 0; transition: color 0.3s; }
+        .t-marker { width: 16px; height: 16px; background-color: #fff; border: 3px solid var(--text-muted); border-radius: 50%; transition: 0.3s; position: relative; left: -9.5px; margin-right: 25px; flex-shrink: 0; z-index: 2; transform: translateY(3px); }
+        .t-content { flex: 1; }
+        .t-title { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 400; margin: 0; transition: color 0.3s; line-height: 1.2; letter-spacing: -0.02em; }
+        .t-role-detail { font-family: var(--font-body); font-weight: 400; color: var(--text-muted); font-size: 0.9rem; margin-left: 10px; }
+        .t-sep { color: var(--accent-color); margin: 0 8px; font-weight: 400; }
+        
+        .timeline-header:hover .t-date, .timeline-header:hover .t-title { color: var(--accent-color); }
+        .timeline-header:hover .t-marker { border-color: var(--accent-color); background-color: var(--accent-color); box-shadow: 0 0 0 6px var(--accent-soft); }
+        
+        .timeline-details { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1); margin-left: var(--line-pos); padding-left: 30px; }
+        .details-inner { overflow: hidden; }
+
+        /* --- HORIZONTAL SLIDER NEW CSS --- */
+        .horizontal-slider-wrapper { background: white; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-top: 25px; position: relative; overflow: hidden; }
+        .slider-track { display: flex; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); width: 100%; align-items: stretch; }
+        .sub-bullet-slide { min-width: 100%; display: flex; box-sizing: border-box; }
+        
+        .details-visual { width: 35%; position: relative; min-height: 320px; background-color: #333; border-radius: 12px 0 0 12px; overflow: hidden; }
+        .details-visual img, .details-visual video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .details-text { width: 65%; padding: 40px 55px; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; }
+        .details-text h4 { margin-top: 0; color: var(--accent-color); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0px; font-size: 1.2rem; margin-bottom: 15px; font-weight: 500;}
+        .details-text p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px; line-height: 1.7; text-align: justify; }
+
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.95); backdrop-filter: blur(5px); color: var(--accent-color); border: 1px solid rgba(234, 88, 12, 0.2); width: 30px; height: 30px; border-radius: 50%; cursor: pointer; z-index: 5; display: flex; align-items: center; justify-content: center; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 0.8rem; }
+        .slider-btn:hover { background: var(--accent-color); color: white; }
+        .prev-btn { left: 8px; } .next-btn { right: 8px; }
+        .slide-counter { position: absolute; top: 15px; right: 15px; z-index: 5; background: var(--glass-bg); color: var(--text-main); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+
+        /* --- SNAKE SECTION --- */
+        .snake-section { width: 100%; height: 150px; background-color: var(--bg-snake); position: relative; overflow: hidden; margin-top: -1px; margin-bottom: -1px; }
+        .snake-container { max-width: 1000px; margin: 0 auto; height: 100%; position: relative; padding: 0 20px; }
+        .snake-curve-top { position: absolute; top: 0; left: var(--snake-start-x); width: calc(50% - var(--snake-start-x)); height: 50%; border-left: var(--line-width) solid var(--line-color); border-bottom: var(--line-width) solid var(--line-color); border-bottom-left-radius: 50px; box-sizing: border-box; }
+        .snake-curve-bottom { position: absolute; top: 50%; right: var(--snake-start-x); width: calc(50% - var(--snake-start-x)); height: 100%; border-right: var(--line-width) solid var(--line-color); border-top: var(--line-width) solid var(--line-color); border-top-right-radius: 50px; box-sizing: border-box; margin-right: calc(var(--line-width) * -1 + 3px); margin-top: calc(var(--line-width) * -1); }
+
+        /* --- TIMELINE MIRRORED --- */
+        .timeline-wrapper.mirrored { padding-top: 0; }
+        .timeline-wrapper.mirrored::before { left: auto; right: var(--line-pos); top: var(--exp-mirror-line-top); bottom: var(--exp-mirror-line-bottom); background: var(--line-color); }
+        .timeline-header.mirrored { justify-content: flex-end; }
+        .timeline-header.mirrored .t-content { text-align: right; order: 1; margin-right: 25px; }
+        .timeline-header.mirrored .t-marker { order: 2; margin-right: 30px; margin-left: 0; left: 9.5px; }
+        .timeline-header.mirrored .t-date { order: 3; text-align: left; margin-right: 0; }
+        .timeline-details.mirrored { margin-left: 0; margin-right: var(--line-pos); padding-left: 0; padding-right: 30px; }
+        
+        .timeline-details.mirrored .slide-counter { right: auto; left: 15px; }
+        /* Stile per i dati aggiuntivi a fondo scheda */
+        .details-meta {
+            font-size: 0.8rem;
+            font-style: italic;
+            color: #94a3b8; /* Un grigio leggermente più chiaro del testo normale */
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--line-color); /* Una linea sottile di separazione */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            font-family: var(--font-body);
+        }
+        .details-meta i {
+            color: var(--accent-color); /* Icone arancioni per richiamare il tuo tema */
+            margin-right: 5px;
+        }
+        @media (min-width: 769px) {
+            .timeline-details.mirrored .sub-bullet-slide { flex-direction: row-reverse; }
+            .timeline-details.mirrored .details-visual { border-radius: 0 12px 12px 0; }
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .d-100 { transition-delay: 0.1s; } .d-200 { transition-delay: 0.2s; } .d-300 { transition-delay: 0.3s; } .d-400 { transition-delay: 0.4s; } .d-500 { transition-delay: 0.5s; }
+
+        .timeline-item.open .timeline-details { grid-template-rows: 1fr; }
+        .timeline-item.open .t-marker { border-color: var(--accent-color); background: var(--accent-color);} 
+        .timeline-item.open .t-title { color: var(--accent-color); }
+
+        /* HUDSON CONTACT STYLE */
+        .hudson-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        .contact-header { text-align: center; margin-bottom: 50px; }
+        .contact-intro { color: var(--text-muted); line-height: 1.8; max-width: 600px; margin: 0 auto; }
+        .contact-timeline { position: relative; padding-bottom: 0; }
+        .contact-timeline::before { content: ''; position: absolute; left: calc(var(--line-pos) - 1px); top: -191px; bottom: 20px; width: var(--line-width); background: var(--line-color); z-index: 0; }
+        .contact-timeline .t-marker { width: 16px; height: 16px; position: absolute; left: var(--line-pos); transform: translateX(-50%); margin: 0; z-index: 2; display: flex; align-items: center; justify-content: center; background-color: white; border: 3px solid var(--text-muted); border-radius: 50%; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .contact-timeline .t-marker::before { display: block; font-size: 20px; color: white; opacity: 0; transform: scale(0); transition: 0.2s; }
+        .contact-timeline .timeline-header:hover .t-marker { width: 40px; height: 40px; background-color: var(--accent-color); border-color: var(--accent-color); box-shadow: 0 0 0 6px var(--accent-soft); }
+        .contact-timeline .timeline-header:hover .t-marker::before { opacity: 1; transform: scale(1); }
+        .contact-timeline .timeline-header:hover .t-title { color: var(--accent-color); transform: translateX(10px); transition: 0.3s; }
+        .contact-timeline .timeline-header { padding: 10px 0; transition: 0.3s; display: flex; align-items: center; text-decoration: none; position: relative; padding-left: calc(var(--line-pos) + 30px); }
+        .contact-timeline .t-title { font-size: 1rem; font-weight: 400; font-family: var(--font-body); transition: 0.3s; }
+        .c-email .t-marker::before { content: "\f0e0"; font-family: "Font Awesome 6 Free"; font-weight: 900; }
+        .c-linkedin .t-marker::before { content: "\f0e1"; font-family: "Font Awesome 6 Brands"; }
+        .c-research .t-marker::before { content: "\f4f8"; font-family: "Font Awesome 6 Brands"; }
+        .c-orcid .t-marker::before { content: "\f8d2"; font-family: "Font Awesome 6 Brands"; }
+        .contact-timeline .timeline-item { margin-bottom: 25px; }
+
+        .contact-right { display: flex; flex-direction: column; gap: 20px; justify-content: center; height: 100%; padding-top: 20px; margin-top: -60px; }
+        .hudson-btn { display: flex; align-items: center; justify-content: space-between; background: var(--bg-alt); padding: 10px 40px; border-radius: 8px; text-decoration: none; transition: 0.3s; border: 1px solid transparent; }
+        .hudson-btn:hover { background: white; border-color: #e2e8f0; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .btn-content h4 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 5px; font-weight: 400; }
+        .btn-content span { font-family: var(--font-body); color: var(--text-muted); font-size: 0.85rem; }
+        .btn-icon { font-size: 1.5rem; color: var(--accent-color); }
+
+        .snake-curve-top-rev { position: absolute; top: 0; right: var(--snake-start-x); width: calc(50% - var(--snake-start-x)); height: 50%; border-right: var(--line-width) solid var(--line-color); border-bottom: var(--line-width) solid var(--line-color); border-bottom-right-radius: 50px; box-sizing: border-box; }
+        .snake-curve-bottom-rev { position: absolute; top: 50%; left: var(--snake-start-x); width: calc(50% - var(--snake-start-x)); height: 100%; border-left: var(--line-width) solid var(--line-color); border-top: var(--line-width) solid var(--line-color); border-top-left-radius: 50px; box-sizing: border-box; margin-left: calc(var(--line-width) * -1 + 2px); margin-top: calc(var(--line-width) * -1); }
+        
+        /* Stile per i tag delle competenze / software */
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .tag {
+            background: var(--bg-alt);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+        .tag:hover {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(234, 88, 12, 0.2);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 768px) {
+            :root { --line-position: 25px; --snake-start-x: 25px; }
+            h1.name { font-size: 3rem; }
+            
+            /* -- ECCO LA MODIFICA PER CENTRARE IL TESTO -- */
+            .hero { flex-direction: column; padding-top: 0; justify-content: center; height: 100vh; }
+            .hero-content { padding: 0 20px; text-align: center; margin-bottom: 0; display: flex; flex-direction: column; align-items: center; width: 100%; box-sizing: border-box; }
+       
+            
+            .tagline { display: inline-block; margin-left: 0; margin-right: 0; width: auto; }
+            p.bio-short { width: 100%; max-width: 100%; }
+            .hero-visual { height: 400px; width: 100%; }
+            #navbar { top: 10px; width: 95%; border-radius: 20px; padding: 8px 0;}
+            .menu-toggle { display: block; } 
+            .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); text-align: center; padding: 20px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 0 0 20px 20px; margin-top: 10px; border: 1px solid rgba(255,255,255,0.8); }
+            .nav-links.active { display: flex; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px;}
+            .hudson-grid { grid-template-columns: 1fr; gap: 40px; }
+            .contact-left { text-align: center; }
+            .contact-timeline::before { left: 29px; top: -100; bottom: 0; }
+            .contact-timeline .t-marker { left: 29px !important; margin: 0; top: 10px; transform: translateX(-50%); }
+            .contact-timeline .timeline-header { padding-left: 60px; } 
+            .contact-timeline .t-title { margin-left: 0; }
+            #experience .timeline-wrapper::before { left: 29px; 
+    top: -242px; /* Modifica questo per alzare/abbassare l'inizio della PRIMA linea */
+    bottom: -50px; /* Modifica questo per alzare/abbassare la fine della PRIMA linea */
+    background: var(--line-color); }
+            .timeline-header { flex-wrap: wrap; padding-left: 50px; }
+            .t-date { width: 100%; text-align: left; margin-bottom: 5px; font-size: 0.85rem; color: var(--accent-color);}
+            .t-marker { position: absolute; left: 20px !important; margin: 0; top: 28px; }
+            .t-role-detail { display: block; margin-left: 0; margin-top: 5px; }
+            .t-sep { display: none; } 
+            .timeline-details { margin-left: 0; padding-left: 0; padding-top: 10px; }
+            .timeline-wrapper.mirrored::before { left: 29px; 
+                                                right: auto; 
+                                                top: -176px;  /* Modifica questo per alzare/abbassare l'inizio della SECONDA linea */
+                                                bottom: 0; }
+            .timeline-header.mirrored { justify-content: flex-start; padding-left: 50px; }
+            .timeline-header.mirrored .t-content { text-align: left; order: 3; margin-right: 0; }
+            .timeline-header.mirrored .t-marker { order: 2; margin-right: 20px; left: 20px !important; margin-left: 0; }
+            .timeline-header.mirrored .t-date { order: 1; text-align: left; }
+            .timeline-details.mirrored { margin-right: 0; margin-left: 0; padding-right: 0; }
+            
+            /* SLIDER MOBILE FIX */
+            .sub-bullet-slide { flex-direction: column; }
+            .details-visual { width: 100%; height: 200px; min-height: 200px; border-radius: 12px 12px 0 0; }
+            .details-text { width: 100%; padding: 25px 45px; box-sizing: border-box; }
+            .timeline-header.mirrored .t-title { display: flex; flex-direction: column-reverse; align-items: flex-start; }
+            .timeline-header.mirrored .t-role-detail { margin-right: 0 !important; margin-top: 5px; }
+            .snake-section { display: none; }
+            #experience { padding-bottom: 0 !important; }
+            #experience::after { content: ''; position: absolute; left: 29px; bottom: -50px; width: 3px; height: 50px; background: var(--line-color); display: block; }
+            #experience { padding-bottom: 50px !important; }
+        }
+        .details-text a.dynamic-link {
+                                            color: var(--text-main) !important;
+                                            font-weight: 700;
+                                            text-decoration: none !important;
+                                            transition: color 0.3s ease;
+                                        }
+                                        .details-text a.dynamic-link:hover {
+                                            color: var(--accent-color) !important;
+                                        }
+    </style>
+    
+</head>
+<body>
+
+   <header class="hero">
+        <div class="hero-content reveal">
+            <span class="tagline">Ph.D. Engineer & Researcher</span>
+            <h1 class="name">Romolo Di Bernardo</h1>
+            <p class="bio-short"><span id="typewriter-text"></span><span class="cursor"></span></p>
+            <a href="#about" class="btn">Learn more</a>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        
+        <nav id="navbar" class="reveal d-100">
+            <div class="nav-container">
+                <div class="nav-inner">
+                    <a href="#" class="nav-logo">RDB<span>.</span></a> 
+                    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+                    <ul class="nav-links">
+                        <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                        <li><a href="#experience_0" onclick="toggleMenu()">Experience</a></li>
+                        <li><a href="#Academic_0" onclick="toggleMenu()">Academic</a></li>
+                        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="section bg-alt" id="about">
+            <div class="container about-grid">
+                <div class="about-visual">
+                    <img src="Romolo-profile.png" alt="Romolo Di Bernardo" class="profile-img">
+                </div>
+                <div class="about-content-right reveal d-200">
+                    <h2 class="section-title" style="text-align:left; margin-bottom: 30px;">About <span>Me</span></h2>
+                    <div class="about-text">
+                        <p>I am a <b>Mechanical Engineer (Ph.D.)</b> and researcher in Generative Design and Biomimetics for aerospace applications at the <b>University of Naples Federico II</b>. My expertise focuses on advanced design methods, fluid dynamics, and Computer-aided Engineering (CAE). </p>
+                        <p>My work bridges the gap between theory and practical application.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-white pb-medium pt-small" id="experience_0">
+            <div class="container">
+                <h2 class="section-title reveal">Experience and <span>Projects</span></h2>
+            </div>
+        </section>
+        
+        <section class="section bg-white pt-0" id="experience" style="padding-bottom: 0;">
+            <div class="container">
+                <div class="timeline-wrapper">
+                    
+                    <div class="timeline-item reveal d-100" id="exp-ind">
+                        <div class="timeline-header" onclick="toggleItem('exp-ind')">
+                            <div class="t-date">Since 2018</div>
+                            <div class="t-marker"></div>
+                            <div class="t-content">
+                                <h3 class="t-title">Main Industrial Collaborations <span class="t-sep">—</span> <span class="t-role-detail">Industry</span></h3>
+                            </div>
+                        </div>
+                        <div class="timeline-details">
+                            <div class="details-inner">
+                                <div class="horizontal-slider-wrapper">
+                                    <div class="slide-counter">1 / 6</div>
+                                    <button class="slider-btn prev-btn" onclick="moveSubBullet('track-exp-ind', -1); event.stopPropagation();">&#10094;</button>
+                                    <button class="slider-btn next-btn" onclick="moveSubBullet('track-exp-ind', 1); event.stopPropagation();">&#10095;</button>
+                                    
+                                    <div class="slider-track" id="track-exp-ind" data-index="0">
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual">
+                                                <img src="visio.jpg" alt="Visio">
+                                            </div>
+                                            <div class="details-text">
+                                                <h4><a href="https://www.visioelectric.it" target="_blank" class="dynamic-link">Visio Electric S.r.l.</a></h4>
+                                                <p>Born as an idea between two friends and university colleagues, I held different roles in the company, as well as  managing, R&D technical responsible and mentoring teams.</p>
+                                            </div>
+                                        </div>
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"> <video src="dedalo.mp4" autoplay loop muted playsinline></video></div>
+                                            <div class="details-text">
+                                                <h4><a href="https://www.dedalonavi.it" target="_blank" class="dynamic-link">Dedalo Navi S.r.l.</a></h4>
+                                                <p>I collaborate for R&D, my work focus on designing and testing hydrofoil vessels geometries through CFD simulations.</p>
+                                            </div>
+                                        </div>
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"> <video src="prop.mp4" autoplay loop muted playsinline></video></div>
+                                            <div class="details-text">
+                                                <h4><a href="https://www.boatpropulsionitalia.com" target="_blank" class="dynamic-link">Boat Propulsion Italia S.r.l.</a></h4>
+                                                <p>We collaborate for R&D performing CFD campaigns to analyse propellers including open-water and ducted propellers, and analyses of planing hulls.</p>
+                                            </div>
+                                        </div>
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="milit.jpeg" alt="Italian Armed Forces"></div>
+                                            <div class="details-text">
+                                                <h4>Military</h4>
+                                                <p>I worked to design infrastructure systems, including mooring systems for the Guardia di Finanza Naval School and high-power charging stations for military vessels, ensuring reliability under operational constraints.</p>
+                                            </div>
+                                        </div>
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="scire.jpg" alt="Consorzio SCIRE"></div>
+                                            <div class="details-text">
+                                                <h4><a href="https://www.consorzio-scire.com" target="_blank" class="dynamic-link">Consorzio SCIRE</a></h4>
+                                                <p>This experience gave me the opportunity to develop a custom workflow utilising Python scripting and Grasshopper to interface with Meta Quest VR hardware to analyse big data for astrophysics.</p>
+                                            </div>
+                                        </div>
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"> <video src="insi.mp4" autoplay loop muted playsinline></video></div>
+                                            <div class="details-text">
+                                                <h4>Technical Instructor IN.SI. for AVIO SPA</h4>
+                                                <p>I delivered the specialised course "Topology and Structural Optimization Procedures" to professional aerospace and
+aeronautical engineers. The course deal on advanced design methodologies, focusing on Finite Element Analysis, Generative Design and Design for Additive Manufacturing
+(DfAM) for high-performance and lightweight components.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal d-200" id="exp-ath">
+                        <div class="timeline-header" onclick="toggleItem('exp-ath')">
+                            <div class="t-date">Since 2023</div>
+                            <div class="t-marker"></div>
+                            <div class="t-content">
+                                <h3 class="t-title">Main Athlete & Team Collaborations <span class="t-sep">—</span> <span class="t-role-detail">Sailing / Foiling</span></h3>
+                            </div>
+                        </div>
+                        <div class="timeline-details">
+                            <div class="details-inner">
+                                <div class="horizontal-slider-wrapper">
+                                    <div class="slide-counter">1 / 2</div>
+                                    <button class="slider-btn prev-btn" onclick="moveSubBullet('track-exp-ath', -1); event.stopPropagation();">&#10094;</button>
+                                    <button class="slider-btn next-btn" onclick="moveSubBullet('track-exp-ath', 1); event.stopPropagation();">&#10095;</button>
+                                    
+                                   <div class="slider-track" id="track-exp-ath" data-index="0">
+                                        
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="fede.jpg" alt="Federico Colaninno"></div>
+                                            <div class="details-text">
+                                                <h4><a href="https://it.wikipedia.org/wiki/Federico_Colaninno" target="_blank" class="dynamic-link">Federico Colaninno</a></h4>
+                                                <p><a href="https://it.wikipedia.org/wiki/Federico_Colaninno" target="_blank" class="dynamic-link">Federico Colaninno</a> is a multiple-time World, European, and Italian champion across various sailing classes, and winner of the 2024 Youth America’s Cup with Luna Rossa Prada Pirelli. We worked together applying Reverse Engineering and CFD analyses to deeply optimize his racing sailboats.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="gigi.png" alt="ITA98"></div>
+                                            <div class="details-text">
+                                                <h4>ITA98 Ugolini-Giubilei</h4>
+                                                <p><a href="https://it.wikipedia.org/wiki/Gianluigi_Ugolini" target="_blank" class="dynamic-link">Gianluigi Ugolini</a> and <a href="https://it.wikipedia.org/wiki/Maria_Giubilei" target="_blank" class="dynamic-link">Maria Giubilei</a> (ITA98) are multiple-time U24 World Champions and 2024 Youth America’s Cup winners with Luna Rossa Prada Pirelli. I'm collaborating to redesign custom Nacra 17 components, aiming to enhance overall functionality and go faster looking for LA2028 Olympics!</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal d-300" id="exp-skills" style="margin-bottom: 0;">
+                        <div class="timeline-header" onclick="toggleItem('exp-skills')">
+                            <div class="t-date"> </div>
+                            <div class="t-marker"></div>
+                            <div class="t-content">
+                                <h3 class="t-title">Skills and Software Used <span class="t-sep">—</span> <span class="t-role-detail">Technical Tools</span></h3>
+                            </div>
+                        </div>
+                        <div class="timeline-details">
+                            <div class="details-inner">
+                                <div class="horizontal-slider-wrapper">
+                                    <div class="slide-counter">1 / 2</div>
+                                    <button class="slider-btn prev-btn" onclick="moveSubBullet('track-exp-skills', -1); event.stopPropagation();">&#10094;</button>
+                                    <button class="slider-btn next-btn" onclick="moveSubBullet('track-exp-skills', 1); event.stopPropagation();">&#10095;</button>
+                                    
+                                   <div class="slider-track" id="track-exp-skills" data-index="0">
+                                        
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><video src="environment.mp4" autoplay loop muted playsinline></video></div>
+                                            <div class="details-text">
+                                                <h4>Engineering & R&D</h4>
+                                                <ul style="margin-bottom: 0; padding-left: 15px;">
+                                                    <li style="margin-bottom: 8px;"><b>Advanced Simulation:</b> CFD, FEA, FSI (Fluid-Structure Interaction) & Topology and Topography Optimization.</li>
+                                                    <li style="margin-bottom: 8px;"><b>Design & Modelling:</b> Algorithmic & Parametric Modelling, Generative Design, DfAM.</li>
+                                                    <li style="margin-bottom: 8px;"><b>Materials & Testing:</b> Lightweight Structures, Experimental Data Correlation.</li>
+                                                    <li><b>R&D Approach:</b> Bio-inspired Design, Reverse Engineering, Rapid Prototyping.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="softwares.png" alt="Software"></div>
+                                            <div class="details-text">
+                                                <h4>Software & Ecosystem</h4>
+                                                <p style="font-style: italic;">(Main software used)</p>
+                                                
+                                                <div class="skill-tags">
+                                                    <span class="tag">Star CCM+</span>
+                                                    <span class="tag">Ansys</span>
+                                                    <span class="tag">Siemens NX</span>
+                                                    <span class="tag">Solidworks</span>
+                                                    <span class="tag">Rhinoceros & Grasshopper (licensed user)</span>
+                                                    <span class="tag">Fusion360</span>
+                                                    <span class="tag">Matlab & Simulink</span>
+                                                    <span class="tag">Siemens Heeds</span>
+                                                    <span class="tag">nTop</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80" alt="Leadership"></div>
+                                            <div class="details-text">
+                                                <h4>Leadership & Soft Skills</h4>
+                                                <ul style="margin-bottom: 0; padding-left: 15px;">
+                                                    <li style="margin-bottom: 8px;"><b>Leadership:</b> Mentored R&D teams across academia, industry, and startups.</li>
+                                                    <li style="margin-bottom: 8px;"><b>Project Management:</b> Coordinated multidisciplinary workflows from concept to prototyping.</li>
+                                                    <li style="margin-bottom: 8px;"><b>Communication:</b> Presented at international conferences & managed scientific publications.</li>
+                                                    <li><b>Problem Solving:</b> Applied lateral thinking to overcome complex engineering constraints.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="snake-section" style="background-color: var(--bg-white);">
+             <div class="container snake-container">
+                 <div class="snake-curve-top"></div>
+                 <div class="snake-curve-bottom"></div>
+             </div>
+        </section>
+
+        <section class="section bg-alt pb-medium no-border-top pt-small no-border-bottom" id="Academic_0">
+             <div class="container">
+                <h2 class="section-title reveal">Academic <span>Background</span></h2>
+             </div>
+        </section>
+        
+        <section class="section bg-alt pt-0 no-border-top"  style="padding-top: 0; padding-bottom: 0;">
+            <div class="container">
+                <div class="timeline-wrapper mirrored">
+                    
+                    <div class="timeline-item reveal d-100" id="m-exp-res">
+                        <div class="timeline-header mirrored" onclick="toggleItem('m-exp-res')">
+                            <div class="t-date">Since 2025</div>
+                            <div class="t-marker"></div>
+                            <div class="t-content">
+                                <h3 class="t-title"><span class="t-role-detail" style="margin-left: 0; margin-right: 10px;">University of Naples Federico II</span> <span class="t-sep">—</span> Postdoctoral Position</h3>
+                            </div>
+                        </div>
+                        <div class="timeline-details mirrored">
+                            <div class="details-inner">
+                                <div class="horizontal-slider-wrapper">
+                                    <div class="slider-track" id="track-m-exp-res" data-index="0">
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="postdoc.jpg" alt="Postdoc"></div>
+                                            <div class="details-text">
+                                                <h4>Postdoctoral Position</h4>
+                                                <p>Generative and Biomimetics Design for Additive Manufacturing of Aeronautical Structures in the context of the NEMESI project (New
+Engineering and Manufacturing Enhanced System Innovation) with Leonardo S.p.A. Ref. prof. Antonio Gloria.</p>
+                                                    <div class="details-meta">
+                                                    <span><i class="fas fa-map-marker-alt"></i> Centro Servizi Metrologici Avanzati</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal d-200" id="m-exp-edu">
+                        <div class="timeline-header mirrored" onclick="toggleItem('m-exp-edu')">
+                            <div class="t-date">2013-2024</div>
+                            <div class="t-marker"></div>
+                            <div class="t-content">
+                                <h3 class="t-title"><span class="t-role-detail" style="margin-left: 0; margin-right: 10px;">University of Cassino</span> <span class="t-sep">—</span> My Education</h3>
+                            </div>
+                        </div>
+                        <div class="timeline-details mirrored">
+                            <div class="details-inner">
+                                <div class="horizontal-slider-wrapper">
+                                    <div class="slide-counter">1 / 2</div>
+                                    <button class="slider-btn prev-btn" onclick="moveSubBullet('track-m-exp-edu', -1); event.stopPropagation();">&#10094;</button>
+                                    <button class="slider-btn next-btn" onclick="moveSubBullet('track-m-exp-edu', 1); event.stopPropagation();">&#10095;</button>
+                                    
+                                    <div class="slider-track" id="track-m-exp-edu" data-index="0">
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><video src="Phdthesis.mov" autoplay loop muted playsinline></video></div>
+                                            <div class="details-text">
+                                                <h4>Ph.D. in Methods, Models, and Technologies for Engineering</h4>
+                                                <p><em>My thesis was "Development of Algorithmic and Parametric Methods for the Design of Sustainable Hydrofoil Boats"</em></p>
+                                                <p>Visiting Researcher at CDRSP (Politécnico de Leiria, Portugal) | Experimental & Numerical Analysis (University of Naples Federico II) | Industrial R&D Placement – Rivale Yacht Srl, Valerio Rivellini.</p>
+                                            </div>
+                                        </div>
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&q=80" alt="PhD"></div>
+                                            <div class="details-text">
+                                                <h4>M.Sc. in Mechanical Engineering</h4>
+                                                <p><em>(LM-33). Graduated with honours, my M.Sc. thesis was "Preliminary Design of a Daysailer with Hydrofoil".</em></p>
+                                                <div class="details-meta">
+                                                    <span><i class="fas fa-map-marker-alt"></i> Centro Servizi Metrologici Avanzati</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal d-300" id="m-exp-cert">
+                        <div class="timeline-header mirrored" onclick="toggleItem('m-exp-cert')">
+                            <div class="t-date">Since 2020</div>
+                            <div class="t-marker"></div>
+                            <div class="t-content">
+                                <h3 class="t-title"><span class="t-role-detail" style="margin-left: 0; margin-right: 10px;">Certifications</span> <span class="t-sep">—</span> Titles and Licenses</h3>
+                            </div>
+                        </div>
+                        <div class="timeline-details mirrored">
+                            <div class="details-inner">
+                                <div class="horizontal-slider-wrapper">
+                                    <div class="slide-counter">1 / 3</div>
+                                    <button class="slider-btn prev-btn" onclick="moveSubBullet('track-m-exp-cert', -1); event.stopPropagation();">&#10094;</button>
+                                    <button class="slider-btn next-btn" onclick="moveSubBullet('track-m-exp-cert', 1); event.stopPropagation();">&#10095;</button>
+                                    
+                                    <div class="slider-track" id="track-m-exp-cert" data-index="0">
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="CS50.png" alt="Harvard"></div>
+                                            <div class="details-text">
+                                                <h4>Harvard CS50</h4>
+                                                <p>This course allows me to go into algorithms, data structures, and computational thinking. I gained proficiency in C and Python programming, applying code-based problem solving to complex scenarios.</p>
+                                            </div>
+                                        </div>
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80" alt="Engineer"></div>
+                                            <div class="details-text">
+                                                <h4>Licensed professional engineer</h4>
+                                                <p>State examination for professional practice, Order of Engineers of Frosinone, Italy.</p>
+                                            </div>
+                                        </div>
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="Cornell.png" alt="Simulation"></div>
+                                            <div class="details-text">
+                                                <h4>A Hands-on introduction to engineering simulation</h4>
+                                                <p>This course delivered from Cornell University was my first step in numerical simulation. I started to mastered fundamentals of Finite Element Analysis (FEA) and Computational Fluid Dynamics (CFD) using Ansys.
+</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal d-400" id="m-exp-pub">
+                        <div class="timeline-header mirrored" onclick="toggleItem('m-exp-pub')">
+                            <div class="t-date">Since 2021</div>
+                            <div class="t-marker"></div>
+                            <div class="t-content">
+                                <h3 class="t-title"><span class="t-role-detail" style="margin-left: 0; margin-right: 10px;">Research</span> <span class="t-sep">—</span> Selected Publications</h3>
+                            </div>
+                        </div>
+                        <div class="timeline-details mirrored">
+                            <div class="details-inner">
+                                <div class="horizontal-slider-wrapper">
+                                    <div class="slider-track" id="track-m-exp-pub" data-index="0">
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&q=80" alt="Publications"></div>
+                                            <div class="details-text">
+                                                <h4>Selected Publications and Conferences</h4>
+                                                <p>[Insert your list or description of selected publications and conferences here]</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal d-500" id="m-exp-proj" style="margin-bottom: 0;">
+                        <div class="timeline-header mirrored" onclick="toggleItem('m-exp-proj')">
+                            <div class="t-date">Since 2021</div>
+                            <div class="t-marker"></div>
+                            <div class="t-content">
+                                <h3 class="t-title"><span class="t-role-detail" style="margin-left: 0; margin-right: 10px;">Leadership</span> <span class="t-sep">—</span> Academic Work and Projects</h3>
+                            </div>
+                        </div>
+                        <div class="timeline-details mirrored">
+                            <div class="details-inner">
+                                <div class="horizontal-slider-wrapper">
+                                    <div class="slide-counter">1 / 3</div>
+                                    <button class="slider-btn prev-btn" onclick="moveSubBullet('track-m-exp-proj', -1); event.stopPropagation();">&#10094;</button>
+                                    <button class="slider-btn next-btn" onclick="moveSubBullet('track-m-exp-proj', 1); event.stopPropagation();">&#10095;</button>
+                                    
+                                    <div class="slider-track" id="track-m-exp-proj" data-index="0">
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80" alt="Africa Project"></div>
+                                            <div class="details-text">
+                                                <h4>Africa project</h4>
+                                                <p>[Insert your description here]</p>
+                                            </div>
+                                        </div>
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="phdsymp.jpeg" alt="Symposium"></div>
+                                            <div class="details-text">
+                                                <h4>General Coordinator of International PhD Symposium</h4>
+                                                <p>I partecipate as General Coordinator and Co-Editor for the Conference Proceedings.</p>
+                                            </div>
+                                        </div>
+                                        <div class="sub-bullet-slide">
+                                            <div class="details-visual"><img src="phr_gaeta.png" alt="Symposium"></div>
+                                            <div class="details-text">
+                                                <h4>Organizer of PHR17</h4>
+                                                <p>The conference series deal with the Photosynthesis and Hydrogen Energy Research for Sustainability</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="snake-section" style="background-color: var(--bg-alt);">
+             <div class="container snake-container">
+                 <div class="snake-curve-top-rev"></div>
+                 <div class="snake-curve-bottom-rev"></div>
+             </div>
+        </section>
+
+        <section class="section bg-white pt-small" id="contact">
+            <div class="container">
+                <div class="contact-header reveal">
+                    <h2 class="section-title">Get in <span>Touch</span></h2>
+                    <p class="contact-intro">
+                        Don't hesitate to reach out.
+                    </p>
+                </div>
+
+                <div class="hudson-grid">
+                    <div class="contact-left">
+                        <div class="timeline-wrapper contact-timeline">
+                            <div class="timeline-item c-email reveal d-100">
+                                <a href="mailto:romolo.dibernardo@unicas.it" class="timeline-header">
+                                    <div class="t-marker"></div>
+                                    <div class="t-title">romolo.dibernardo@unicas.it</div>
+                                </a>
+                            </div>
+                            <div class="timeline-item c-email reveal d-200">
+                                <a href="mailto:romolo.dibernardo@unina.it" class="timeline-header">
+                                    <div class="t-marker"></div>
+                                    <div class="t-title">romolo.dibernardo@unina.it</div>
+                                </a>
+                            </div>
+                            <div class="timeline-item c-linkedin reveal d-300">
+                                <a href="https://www.linkedin.com/in/romolodibernardo/" class="timeline-header">
+                                    <div class="t-marker"></div>
+                                    <div class="t-title">Connect on LinkedIn</div>
+                                </a>
+                            </div>
+                            <div class="timeline-item c-research reveal d-400">
+                                <a href="https://www.researchgate.net/profile/Romolo-Di-Bernardo" class="timeline-header">
+                                    <div class="t-marker"></div>
+                                    <div class="t-title">Follow Research</div>
+                                </a>
+                            </div>
+                            <div class="timeline-item c-orcid reveal d-500">
+                                <a href="https://scholar.google.com/citations?user=ydUTHT8AAAAJ&hl=it" class="timeline-header">
+                                    <div class="t-marker"></div>
+                                    <div class="t-title">View Academic Profile</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-right">
+                        <a href="https://calendar.app.google/kzgjRxeRbYEJHsHe8" target="_blank" class="hudson-btn reveal d-300">
+                            <div class="btn-content">
+                                <h4>Book a Call</h4>
+                                <span>Check availability on Google Calendar</span>
+                            </div>
+                            <i class="fas fa-calendar-check btn-icon"></i>
+                        </a>
+                        <a href="cv_2026_long.pdf" class="hudson-btn reveal d-400">
+                            <div class="btn-content">
+                                <h4>Download CV</h4>
+                                <span>PDF Format (Updated)</span>
+                            </div>
+                            <i class="fas fa-download btn-icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer style="background: var(--bg-alt);">
+            <div class="container">
+                <p><b>Romolo Di Bernardo</b> &copy; 2026</p>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // FIX SCROLL & HASH
+        if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+        window.onbeforeunload = function () { window.scrollTo(0, 0); }
+        window.addEventListener('load', function() { if (window.location.hash) { history.replaceState(null, null, ' '); window.scrollTo(0, 0); } });
+
+        // SCROLL REVEAL
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); }
+            });
+        }, observerOptions);
+        document.addEventListener("DOMContentLoaded", function() { document.querySelectorAll('.reveal').forEach(el => { observer.observe(el); }); });
+
+        // NAVBAR STICKY
+        const navbar = document.getElementById('navbar');
+        const heroSection = document.querySelector('.hero');
+        window.addEventListener('scroll', () => { if (window.scrollY > heroSection.offsetHeight - 50) navbar.classList.add('stuck'); else navbar.classList.remove('stuck'); });
+
+        function toggleMenu() { document.querySelector('.nav-links').classList.toggle('active'); }
+
+        // TYPEWRITER
+        const phrases = [
+            "From academic research to industrial design and competition.", 
+            "Developing advanced solutions for hydrofoils.", 
+            "Hybrid and sustainable design.", 
+            "Optimization of biomimetic structures."
+        ];
+        const textElement = document.getElementById('typewriter-text');
+        let phraseIndex = 0; let charIndex = 0; let isDeleting = false; let typingSpeed = 50;
+
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) { textElement.innerText = currentPhrase.substring(0, charIndex - 1); charIndex--; typingSpeed = 30; } 
+            else { textElement.innerText = currentPhrase.substring(0, charIndex + 1); charIndex++; typingSpeed = 50; }
+            if (!isDeleting && charIndex === currentPhrase.length) { isDeleting = true; typingSpeed = 2000; } 
+            else if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; typingSpeed = 500; }
+            setTimeout(typeWriter, typingSpeed);
+        }
+        
+        
+        
+        // ACCORDION LOGIC
+        function toggleItem(id) {
+            const item = document.getElementById(id);
+            const isOpen = item.classList.contains('open');
+            
+            // Chiude tutte le finestre aperte
+            document.querySelectorAll('.timeline-item.open').forEach(el => {
+                el.classList.remove('open');
+            });
+            
+            // Apre quella cliccata solo se prima era chiusa
+            if (!isOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // HORIZONTAL SLIDER LOGIC
+        function moveSubBullet(trackId, direction) {
+            const track = document.getElementById(trackId);
+            const slides = track.querySelectorAll('.sub-bullet-slide');
+            if (slides.length <= 1) return;
+
+            let currentIndex = parseInt(track.getAttribute('data-index') || '0');
+            currentIndex += direction;
+            
+            // Loop array
+            if (currentIndex < 0) currentIndex = slides.length - 1;
+            if (currentIndex >= slides.length) currentIndex = 0;
+            
+            track.setAttribute('data-index', currentIndex);
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            // Aggiorna il contatore (es. 2 / 6)
+            const wrapper = track.closest('.horizontal-slider-wrapper');
+            const counter = wrapper.querySelector('.slide-counter');
+            if (counter) {
+                counter.innerText = `${currentIndex + 1} / ${slides.length}`;
+            }
+        }
+
+        window.onload = function() { typeWriter(); };
+    </script>
+</body>
+</html>
